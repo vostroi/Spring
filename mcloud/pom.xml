@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.vostroi</groupId>
     <artifactId>mcloud</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -13,8 +12,6 @@
         <module>core</module>
         <module>micro-services</module>
     </modules>
-
-
     <packaging>pom</packaging>
 
     <properties>
@@ -25,10 +22,26 @@
         <mcloud.version>1.0.0-SNAPSHOT</mcloud.version>
         <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
+        <lombok.version>1.18.12</lombok.version>
+        <junit.version>4.13</junit.version>
+        <mysql-connector.version>8.0.20</mysql-connector.version>
+        <joda-time.version>2.10.6</joda-time.version>
+        <hutool.version>5.3.10</hutool.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <type>pom</type>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -48,12 +61,34 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- 时间工具类 -->
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
+            <!-- 开源的 常用工具类 -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-
 
 </project>

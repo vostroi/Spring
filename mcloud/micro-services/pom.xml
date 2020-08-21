@@ -1,19 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.vostroi</groupId>
         <artifactId>mcloud</artifactId>
+        <groupId>com.vostroi</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.vostroi</groupId>
+    <packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
     <artifactId>micro-services</artifactId>
-    <version>${mcloud.version}</version>
-    <name>micro-services</name>
-    <description>all micro services</description>
+
+    <modules>
+        <module>users</module>
+    </modules>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.vostroi</groupId>
+                <artifactId>core</artifactId>
+                <version>${mcloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vostroi</groupId>
+                <artifactId>users-api</artifactId>
+                <version>${mcloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 
     <dependencies>
@@ -28,24 +58,10 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
     </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.vostroi</groupId>
-                <artifactId>core</artifactId>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
