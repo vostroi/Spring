@@ -1,8 +1,8 @@
-package com.vostroi.components.users.service;
+package com.vostroi.components.service;
 
 import com.vostroi.api.users.bean.User;
 import com.vostroi.api.users.service.UserService;
-import com.vostroi.components.users.dao.UserDao;
+import com.vostroi.components.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,8 @@ import java.util.Optional;
  */
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired private UserDao userDao;
+    @Autowired
+    private UserDao userDao;
 
     @Override
     public JpaRepository getRepositry() {
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findById(String id) {
         Optional<User> u = userDao.findById(id);
-        if(Optional.ofNullable(u).isPresent() && u.isPresent()){
+        if (Optional.ofNullable(u).isPresent() && u.isPresent()) {
             return u.get();
         }
         return null;

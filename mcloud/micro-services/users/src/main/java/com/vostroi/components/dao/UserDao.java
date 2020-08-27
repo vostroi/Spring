@@ -1,4 +1,4 @@
-package com.vostroi.components.users.dao;
+package com.vostroi.components.dao;
 
 import com.vostroi.api.users.bean.User;
 import org.springframework.data.jpa.repository.JpaRepository;

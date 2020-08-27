@@ -1,4 +1,4 @@
-package com.vostroi.components.users.controller;
+package com.vostroi.components.controller;
 
 import cn.hutool.core.util.StrUtil;
 import com.sun.org.apache.regexp.internal.RE;
@@ -22,33 +22,34 @@ import java.util.Date;
 @RequestMapping(value = "/usr")
 public class UserController {
 
-    @Autowired private UserService userService;
+    @Autowired
+    private UserService userService;
 
     @GetMapping(value = "/conn/{params}")
-    public Object testConnect(@PathVariable("params") String params){
+    public Object testConnect(@PathVariable("params") String params) {
 
         return new Date() + " : " + params;
     }
 
     @GetMapping(value = "/get/{id}")
-    public ResultData getUser(@PathVariable("id") String userId){
+    public ResultData getUser(@PathVariable("id") String userId) {
         User user = userService.findById(userId);
-        return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000 , "" , user);
+        return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, "", user);
     }
 
     @PostMapping(value = "/add")
-    public ResultData addUser(User user){
-        if(user == null){
-            return ResultData.getResultData(EnumConstant.RESULT_CODE.FA_2222 , "user is null");
+    public ResultData addUser(@RequestBody User user) {
+        if (user == null) {
+            return ResultData.getResultData(EnumConstant.RESULT_CODE.FA_2222, "user is null");
         }
 
         user = userService.save(user);
 
-        if(user==null || StrUtil.isBlank(user.getId())){
-            return ResultData.getResultData(EnumConstant.RESULT_CODE.FA_2222 , "添加User失败");
+        if (user == null || StrUtil.isBlank(user.getId())) {
+            return ResultData.getResultData(EnumConstant.RESULT_CODE.FA_2222, "添加User失败");
         }
 
-        return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000 , "" , user);
+        return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, "", user);
 
     }
 

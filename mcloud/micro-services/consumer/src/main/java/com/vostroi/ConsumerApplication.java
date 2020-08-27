@@ -7,18 +7,15 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author Administrator
- * @title: UsersApplication
+ * @date 2020/8/25 16:33
  * @projectName mcloud
+ * @title: ConsumerApplication
  * @description: TODO
- * @date 2020/7/16 17:19
  */
-@Configuration
 @EnableAutoConfiguration
-@ComponentScan(basePackages = {"com.vostroi.components", "com.vostroi.api.users"})
-public class UsersApplication {
-
+@ComponentScan(basePackages = {"com.vostroi.components"})
+public class ConsumerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(UsersApplication.class, args);
+        SpringApplication.run(ConsumerApplication.class, args);
     }
-
 }
