@@ -2,6 +2,7 @@ package com.vostroi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @description: TODO
  * @date 2020/7/16 17:19
  */
+@EnableEurekaClient
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"com.vostroi.components", "com.vostroi.api.users"})
