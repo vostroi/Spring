@@ -26,13 +26,14 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:9527/eureka/
+      defaultZone: http://127.0.0.1:9527/eureka
   instance:
     instance-id: users-10086
     prefer-ip-address: true
 info:
   app.name: mcloud-service-users
   app.author: vostroi
-  build.artifactId: users
+  app.desc: for test
+  build.artifactId: consumer
   build.groupId: com.vostroi
 

@@ -30,7 +30,8 @@ import java.util.Map;
 @RestController
 @RequestMapping(value = "/index")
 public class IndexController {
-    private static final String SERVICE_USERS_DOMAIN = "http://127.0.0.1:10086/";
+//    private static final String SERVICE_USERS_DOMAIN = "http://127.0.0.1:10086/";
+    private static final String SERVICE_CLOUD_USERS_DOMAIN = "http://users/";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -42,7 +43,7 @@ public class IndexController {
 
     @GetMapping(value = "/get/usr/{id}")
     public ResultData getUser(@PathVariable("id") String id){
-       return restTemplate.getForObject(SERVICE_USERS_DOMAIN + "usr/get/"+id , ResultData.class);
+       return restTemplate.getForObject(SERVICE_CLOUD_USERS_DOMAIN + "usr/get/"+id , ResultData.class);
     }
 
     @PostMapping(value = "/add/usr")
@@ -50,6 +51,6 @@ public class IndexController {
         if(user == null){
             return ResultData.getResultData(EnumConstant.RESULT_CODE.WA_1111 , "数据为空");
         }
-        return restTemplate.postForObject(SERVICE_USERS_DOMAIN + "usr/add", user, ResultData.class);
+        return restTemplate.postForObject(SERVICE_CLOUD_USERS_DOMAIN + "usr/add", user, ResultData.class);
     }
 }

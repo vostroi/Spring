@@ -4,3 +4,19 @@ server:
 spring:
   application:
     name: consumer
+
+info:
+  app.name: mcloud-service-consumer
+  app.author: vostroi
+  build.artifactId: users
+  build.groupId: com.vostroi
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9527/eureka
+  instance:
+    instance-id: consumer-8080
+    prefer-ip-address: true
+

@@ -29,8 +29,6 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql-connector.version}</version>
             </dependency>
-
-
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
@@ -39,7 +37,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 
     <dependencies>
         <dependency>

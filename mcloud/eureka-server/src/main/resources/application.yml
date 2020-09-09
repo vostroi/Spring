@@ -1,6 +1,6 @@
 spring:
   application:
-    name: m-eureka-server
+    name: mc-eureka-server
 server:
   port: 9527
 
@@ -16,4 +16,4 @@ eureka:
     fetch-registry: false
     service-url:
       # 设置 与 eureka server 交互的地址， 查询服务  和  注册服务 使用到
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
