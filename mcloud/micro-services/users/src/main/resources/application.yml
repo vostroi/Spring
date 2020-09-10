@@ -26,7 +26,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:9527/eureka
+      defaultZone: http://mcloud-eureka-server-02:9528/eureka/,http://mcloud-eureka-server-01:9527/eureka/,http://mcloud-eureka-server-03:9529/eureka/
   instance:
     instance-id: users-10086
     prefer-ip-address: true

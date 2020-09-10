@@ -1,6 +1,6 @@
 spring:
   application:
-    name: mc-eureka-server
+    name: mc-eureka-server-01
 server:
   port: 9527
 
@@ -8,7 +8,7 @@ server:
 eureka:
   instance:
     # eureka server 端名称
-    hostname: mcloud-eureka-server
+    hostname: mcloud-eureka-server-01
   client:
     # 是否向 eureka 注册中心注册本服务 （false 不注册， 本身作为服务端 不需要注册）
     register-with-eureka: false
@@ -16,4 +16,6 @@ eureka:
     fetch-registry: false
     service-url:
       # 设置 与 eureka server 交互的地址， 查询服务  和  注册服务 使用到
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+      # defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+      # 集群
+      defaultZone: http://mcloud-eureka-server-02:9528/eureka/,http://mcloud-eureka-server-03:9529/eureka/
