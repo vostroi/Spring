@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mcloud</artifactId>
+        <groupId>com.vostroi</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>eureka-server-01</artifactId>
+    <packaging>jar</packaging>
+
+    <properties>
+        <application.class>com.vostroi.EurekaServer9527</application.class>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-dependencies</artifactId>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!-- 打成可运行 jar -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>true</addMavenDescriptor>
+                        <manifest>
+                            <!--运行jar包时运行的主类，要求类全名-->
+                            <mainClass>${application.class}</mainClass>
+                            <!-- 是否指定项目classpath下的依赖 -->
+                            <addClasspath>true</addClasspath>
+                            <!-- 指定依赖的时候声明前缀 -->
+                            <classpathPrefix>./lib/</classpathPrefix>
+                        </manifest>
+                        <manifestEntries>
+                            <Class-Path>./</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                    <!-- 过滤掉不希望包含在jar中的文件  -->
+<!--                    <excludes>-->
+<!--                        <exclude>*.xml</exclude>-->
+<!--                        <exclude>spring/**</exclude>-->
+<!--                        <exclude>config/**</exclude>-->
+<!--                    </excludes>-->
+<!--                    <includes>-->
+<!--                        <include></include>-->
+<!--                    </includes>-->
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                            <!--已存在的Release版本不重复copy-->
+                            <overWriteReleases>false</overWriteReleases>
+                            <!--已存在的SnapShot版本不重复copy-->
+                            <overWriteSnapshots>false</overWriteSnapshots>
+                            <!--不存在或者有更新版本的依赖才copy-->
+                            <overWriteIfNewer>true</overWriteIfNewer>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-assembly-plugin</artifactId>-->
+<!--                <executions>-->
+<!--                    <execution>&lt;!&ndash; 配置执行器 &ndash;&gt;-->
+<!--                        <id>make-assembly</id>-->
+<!--                        <phase>package</phase>&lt;!&ndash; 绑定到package生命周期阶段上 &ndash;&gt;-->
+<!--                        <goals>-->
+<!--                            <goal>single</goal>&lt;!&ndash; 只运行一次 &ndash;&gt;-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <finalName>${project.name}</finalName>-->
+<!--                            <descriptor>assembly.xml</descriptor>&lt;!&ndash;配置描述文件路径&ndash;&gt;-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+        </plugins>
+    </build>
+
+</project>

@@ -25,6 +25,8 @@
         <mcloud.version>1.0.0-SNAPSHOT</mcloud.version>
         <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
+        <pring-cloud-starter.version>2.2.5.RELEASE</pring-cloud-starter.version>
+
         <lombok.version>1.18.12</lombok.version>
         <junit.version>4.13</junit.version>
         <mysql-connector.version>8.0.20</mysql-connector.version>
@@ -59,6 +61,8 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter</artifactId>
+                <!-- 这里不指定 version 会导致 maven install 报错 -->
+                <version>${pring-cloud-starter.version}</version>
             </dependency>
 
             <dependency>

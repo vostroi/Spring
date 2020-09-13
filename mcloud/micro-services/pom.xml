@@ -13,7 +13,9 @@
     <artifactId>micro-services</artifactId>
 
     <modules>
-        <module>users</module>
+        <module>users-01</module>
+        <module>users-02</module>
+        <module>users-03</module>
         <module>consumer</module>
     </modules>
 
@@ -66,7 +68,10 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
