@@ -3,6 +3,7 @@ package com.vostroi.components.service;
 import com.vostroi.api.users.bean.User;
 import com.vostroi.api.users.service.UserService;
 import com.vostroi.components.dao.UserDao;
+import com.vostroi.util.ResultData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,5 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
-
 
 }

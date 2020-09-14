@@ -19,7 +19,6 @@
             <groupId>com.vostroi</groupId>
             <artifactId>users-api</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>

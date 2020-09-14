@@ -27,6 +27,7 @@
         <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
         <pring-cloud-starter.version>2.2.5.RELEASE</pring-cloud-starter.version>
         <ribbon-start.version>2.2.5.RELEASE</ribbon-start.version>
+        <feign.version>2.2.5.RELEASE</feign.version>
 
         <lombok.version>1.18.12</lombok.version>
         <junit.version>4.13</junit.version>
@@ -123,6 +124,14 @@
                 <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
                 <version>${ribbon-start.version}</version>
             </dependency>
+            <!--声明式的 web service 客户端， 让 微服务之间的调用变得简单， 类似 API 调用 ,
+            底层使用 Ribbon 作为客户端负载均衡工具 ， 使用 RestTemplate 进行 REST 调用 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${feign.version}</version>
+            </dependency>
+
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
