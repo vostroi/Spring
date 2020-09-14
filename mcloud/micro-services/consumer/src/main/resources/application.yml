@@ -16,7 +16,17 @@ eureka:
   client:
     service-url:
       defaultZone: http://mcloud-eureka-server-03:9529/eureka/,http://mcloud-eureka-server-02:9528/eureka/,http://mcloud-eureka-server-01:9527/eureka/
+    fetch-registry: true
   instance:
     instance-id: consumer-8080
     prefer-ip-address: true
 
+
+ribbon:
+  ConnectTimeout: 1000 #服务请求连接超时时间（毫秒）
+  ReadTimeout: 3000 #服务请求处理超时时间（毫秒）
+  OkToRetryOnAllOperations: true #对超时请求启用重试机制
+  MaxAutoRetriesNextServer: 1 #切换重试实例的最大个数
+  MaxAutoRetries: 1 # 切换实例后重试最大次数
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule #修改负载均衡算法(最小返回时间)
+  # 可配置属性 见 com.netflix.client.config.CommonClientConfigKey
