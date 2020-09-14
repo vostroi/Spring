@@ -6,6 +6,7 @@ Spring Cloud 搭建项目结构
 增加 eureka-server集群 三个eureka server 节点 ； 如果 eureka server 实例的 hostname 没配置在 windows 的 hosts 中， eureka client 也就是 各微服务 使用 不了对应的 eureka server 实例的 hostname 作为defaultZone进行注册 ；
                                                 如果使用 127.0.0.1 来注册， 则只会注册到其中一个 eureka server 节点中 ；
 增加 maven 打可运行 jar 配置
+增加 Feign : 声明式的web service 客户端， 让微服务调用变简单 类似API调用 ， 在 users-api 中增加 UserServiceClient
 mcloud
     |-api
         |-users-api|users服务模块接口
