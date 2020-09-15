@@ -21,4 +21,7 @@ public interface UserServiceClient {
 
     @GetMapping(value = "/usr/get/{id}")
     ResultData getUserById(@PathVariable("id") String id);
+
+    @GetMapping(value = "/usr/calc")
+    ResultData calculatePrice();
 }

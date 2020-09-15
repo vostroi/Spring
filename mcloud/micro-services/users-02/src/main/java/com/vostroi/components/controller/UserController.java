@@ -1,6 +1,7 @@
 package com.vostroi.components.controller;
 
 import cn.hutool.core.util.StrUtil;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.vostroi.api.users.bean.User;
 import com.vostroi.api.users.service.UserService;
 import com.vostroi.util.EnumConstant;
@@ -65,4 +66,16 @@ public class UserController {
 
     }
 
+    /**
+     * 测试 Hystrix 熔断
+     * @return
+     */
+    @GetMapping(value = "/calc")
+    @HystrixCommand(fallbackMethod = "requestError")
+    public ResultData calculatePrice(){
+
+        int i = 1 / 0;
+
+        return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, "");
+    }
 }

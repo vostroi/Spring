@@ -5,6 +5,7 @@ import com.vostroi.api.users.service.UserService;
 import com.vostroi.api.users.service.feign.UserServiceClient;
 import com.vostroi.util.EnumConstant;
 import com.vostroi.util.ResultData;
+import feign.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -39,4 +40,11 @@ public class IndexControllerUseFeign {
 //        }
 //        return restTemplate.postForObject(SERVICE_CLOUD_USERS_DOMAIN + "usr/add", user, ResultData.class);
 //    }
+
+    @GetMapping(value = "/cal")
+    public ResultData calculatePrice(){
+        return userServiceClient.calculatePrice();
+    }
+
+
 }

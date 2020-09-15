@@ -3,6 +3,7 @@ package com.vostroi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableEurekaClient
 @Configuration
 @EnableAutoConfiguration
+@EnableHystrix  // 和 @EnableCircuitBreaker 都可以开启 Hystrix
 @ComponentScan(basePackages = {"com.vostroi.components", "com.vostroi.api.users"})
 public class Users03 {
 

@@ -28,6 +28,7 @@
         <pring-cloud-starter.version>2.2.5.RELEASE</pring-cloud-starter.version>
         <ribbon-start.version>2.2.5.RELEASE</ribbon-start.version>
         <feign.version>2.2.5.RELEASE</feign.version>
+        <hystrix.version>2.2.5.RELEASE</hystrix.version>
 
         <lombok.version>1.18.12</lombok.version>
         <junit.version>4.13</junit.version>
@@ -131,6 +132,13 @@
                 <artifactId>spring-cloud-starter-openfeign</artifactId>
                 <version>${feign.version}</version>
             </dependency>
+            <!-- hystrix 断路器-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+                <version>${hystrix.version}</version>
+            </dependency>
+
 
 
             <dependency>

@@ -36,7 +36,7 @@ public class EnumConstant {
         @Getter
         private int value;
 
-        private RECORD_STATE(String name, int value){
+        RECORD_STATE(String name, int value){
             this.name = name;
             this.value = value;
         }
@@ -70,14 +70,19 @@ public class EnumConstant {
         /**
          * 接口返回错误 接口处理出错 出现在异常
          */
-        ER_3333("错误" , "1111_0000");
+        ER_3333("错误" , "3333_0000"),
+        /**
+         * 服务熔断
+         */
+        ER_3333_1111("服务错误" , "3333_1111")
+        ;
 
         @Getter
         private String msg;
         @Getter
         private String code;
 
-        private RESULT_CODE(String msg, String code){
+        RESULT_CODE(String msg, String code){
             this.msg = msg;
             this.code = code;
         }
