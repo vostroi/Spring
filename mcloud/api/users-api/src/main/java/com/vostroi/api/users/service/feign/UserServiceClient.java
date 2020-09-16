@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
  *  1.UserService 添加了接口 其实现类必须得有实现
  *  2.UserService 若使用现成的 接口， 匹配度 可能不是那么OK
  *  3.Bean 扫描的时候 会有名称重复，造成麻烦
+ *
+ *  fallbackFactory 处理服务降级
  */
-@FeignClient(value = "users")
+@FeignClient(value = "users" ,  fallbackFactory = UserServiceClientFallBack.class)
 public interface UserServiceClient {
 
     @GetMapping(value = "/usr/get/{id}")

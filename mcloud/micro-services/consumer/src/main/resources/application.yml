@@ -21,7 +21,6 @@ eureka:
     instance-id: consumer-8080
     prefer-ip-address: true
 
-
 ribbon:
   ConnectTimeout: 1000 #服务请求连接超时时间（毫秒）
   ReadTimeout: 3000 #服务请求处理超时时间（毫秒）
@@ -30,3 +29,7 @@ ribbon:
   MaxAutoRetries: 1 # 切换实例后重试最大次数
   NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule #修改负载均衡算法(最小返回时间)
   # 可配置属性 见 com.netflix.client.config.CommonClientConfigKey
+
+feign:
+  hystrix:
+    enabled: true # 客户端开启服务降级
