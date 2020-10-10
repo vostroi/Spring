@@ -23,23 +23,11 @@ public class IndexControllerUseFeign {
     @Autowired
     private UserServiceClient userServiceClient;
 
-//    @GetMapping(value = "/conn/{para}")
-//    public ResultData connect(@PathVariable(name = "para") String para) {
-//        return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, para);
-//    }
-
     @GetMapping(value = "/get/usr/{id}")
     public ResultData getUser(@PathVariable("id") String id){
        return userServiceClient.getUserById(id);
     }
 
-//    @PostMapping(value = "/add/usr")
-//    public ResultData addUser(@RequestBody User user){
-//        if(user == null){
-//            return ResultData.getResultData(EnumConstant.RESULT_CODE.WA_1111 , "数据为空");
-//        }
-//        return restTemplate.postForObject(SERVICE_CLOUD_USERS_DOMAIN + "usr/add", user, ResultData.class);
-//    }
 
     @GetMapping(value = "/cal")
     public ResultData calculatePrice(){

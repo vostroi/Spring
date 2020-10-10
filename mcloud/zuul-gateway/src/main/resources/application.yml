@@ -1,0 +1,39 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: zuul-gateway
+
+info:
+  app.name: mcloud-service-gateway-zuul
+  app.author: vostroi
+  build.artifactId: users
+  build.groupId: com.vostroi
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://mcloud-eureka-server-03:9529/eureka/,http://mcloud-eureka-server-02:9528/eureka/,http://mcloud-eureka-server-01:9527/eureka/
+    #      defaultZone: http://mcloud-eureka-server-01:9527/eureka/
+    fetch-registry: true
+  instance:
+    instance-id: zuul-gateway-80
+    prefer-ip-address: true
+
+# 配置路由 ignored-services 忽略 原路径访问  也可以 ignored-services: "*"； prefix 配置统一路径前缀 ； routes 指定新 访问路径
+zuul:
+  prefix: /vostroi
+  ignored-services: '*'
+#  strip-prefix: false  # 为 true 时（默认），转发请求会去掉 prefix ; 为 false 时， 转发请求 不会去掉 prefix
+  routes:
+    consumer-alias:
+      serviceId: consumer         # application.name
+      path: /consumer-alias/**
+    users-alias:
+      serviceId: users
+      path: /users-alias/**       # 这里 users 服务是多节点 - 需要考虑的是 有部分节点 或者 服务 挂了情况
+
+# 还未考虑到服务熔断  降级  限流
+
+

@@ -18,6 +18,7 @@ Spring Cloud 搭建项目结构
                     每个依赖都维护着一个线程池（或信号量），线程池被耗尽则拒绝请求（而不是让请求排队）。
 增加 熔断 处理
 增加 降级 处理 （服务降级是在客户端完成） 需要熔断配合一起使用
+增加 Hystrix Dashboard 近实时的调用监控，记录所有通过 Hystrix 发起的请求的执行信息。
 mcloud
     |-api
         |-users-api|users服务模块接口
@@ -26,6 +27,7 @@ mcloud
           |增加了BaseService| 增加了save(Entity)
                             | findById(id) 写在了UserServiceImpl中 下个版本 移到BaseService中来
     |-eureka-server| 注册中心
+    |-zuul-gateway| 网关 使用 zuul 实现 还未配置 服务熔断 降级 限流
     |-micro-services
         |-users|users服务模块|增加getUser(id)接口
                              |增加addUser(User)接口

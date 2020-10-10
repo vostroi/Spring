@@ -42,7 +42,6 @@ public class UserController extends BaseController{
     }
 
     @GetMapping(value = "/get/{id}")
-    @HystrixCommand
     public ResultData getUser(@PathVariable("id") String userId) {
         User user = userService.findById(userId);
         return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, appPort + "###users-01",  user);

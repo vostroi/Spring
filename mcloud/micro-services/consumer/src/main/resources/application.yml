@@ -16,6 +16,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://mcloud-eureka-server-03:9529/eureka/,http://mcloud-eureka-server-02:9528/eureka/,http://mcloud-eureka-server-01:9527/eureka/
+#      defaultZone: http://mcloud-eureka-server-01:9527/eureka/
     fetch-registry: true
   instance:
     instance-id: consumer-8080
@@ -33,3 +34,9 @@ ribbon:
 feign:
   hystrix:
     enabled: true # 客户端开启服务降级
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"

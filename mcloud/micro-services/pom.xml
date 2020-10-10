@@ -17,6 +17,7 @@
         <module>users-02</module>
         <module>users-03</module>
         <module>consumer</module>
+        <module>services-hystrix-watch</module>
     </modules>
 
     <dependencyManagement>

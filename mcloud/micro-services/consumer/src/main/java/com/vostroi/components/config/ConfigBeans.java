@@ -1,5 +1,7 @@
 package com.vostroi.components.config;
 
+import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
  * @description: 配置 RestTemplate post 请求参数若要用 Map 需要使用 MultiValueMap
  */
 @Configuration
-public class ConfigRestTemplate {
+public class ConfigBeans {
 
     @Bean(name = "factory")
     public ClientHttpRequestFactory simpleClientHttpRequestFactory() {
@@ -31,6 +33,18 @@ public class ConfigRestTemplate {
         return new RestTemplate(factory);
     }
 
-
+    /**
+     * Hystrix Dashboard 不展示， 配置了也没用
+     * @return
+     */
+    @Bean
+    public ServletRegistrationBean getServlet() {
+        HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
+        ServletRegistrationBean registrationBean = new ServletRegistrationBean(streamServlet);
+        registrationBean.setLoadOnStartup(1);
+        registrationBean.addUrlMappings("/hystrix.stream");
+        registrationBean.setName("hystrix.stream");
+        return registrationBean;
+    }
 
 }

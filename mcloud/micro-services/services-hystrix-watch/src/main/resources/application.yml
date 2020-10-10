@@ -1,0 +1,20 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: services-watch
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://mcloud-eureka-server-03:9529/eureka/,http://mcloud-eureka-server-02:9528/eureka/,http://mcloud-eureka-server-01:9527/eureka/
+#      defaultZone: http://mcloud-eureka-server-01:9527/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    instance-id: hystrix-dashboard-9090
+    prefer-ip-address: true
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: "*"

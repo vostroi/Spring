@@ -14,6 +14,7 @@
         <module>eureka-server-01</module>
         <module>eureka-server-02</module>
         <module>eureka-server-03</module>
+        <module>zuul-gateway</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -24,7 +25,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <mcloud.version>1.0.0-SNAPSHOT</mcloud.version>
         <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
-        <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
+        <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
         <pring-cloud-starter.version>2.2.5.RELEASE</pring-cloud-starter.version>
         <ribbon-start.version>2.2.5.RELEASE</ribbon-start.version>
         <feign.version>2.2.5.RELEASE</feign.version>
@@ -155,6 +156,12 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.5</version>
+        </dependency>
+        <!-- Hystrix Dashboard 需要 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.11.2</version>
         </dependency>
     </dependencies>
 
