@@ -1,0 +1,11 @@
+/.idea/
+/.idea/
+/micro-services/.mvn/wrapper/
+/micro-services/users-01/.mvn/wrapper/
+/micro-services/users-02/.mvn/wrapper/
+/micro-services/users-03/.mvn/wrapper/
+/zuul-gateway/.mvn/wrapper/
+/zuul-gateway/HELP.md
+/zuul-gateway/mvnw
+/zuul-gateway/mvnw.cmd
+/.idea/

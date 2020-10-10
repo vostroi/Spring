@@ -28,6 +28,7 @@ mcloud
                             | findById(id) 写在了UserServiceImpl中 下个版本 移到BaseService中来
     |-eureka-server| 注册中心
     |-zuul-gateway| 网关 使用 zuul 实现 还未配置 服务熔断 降级 限流
+                  | 配置熔断
     |-micro-services
         |-users|users服务模块|增加getUser(id)接口
                              |增加addUser(User)接口
