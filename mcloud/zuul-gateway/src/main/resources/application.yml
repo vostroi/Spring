@@ -4,12 +4,17 @@ server:
 spring:
   application:
     name: zuul-gateway
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: on
 
 info:
   app.name: mcloud-service-gateway-zuul
   app.author: vostroi
   build.artifactId: users
   build.groupId: com.vostroi
+
 
 eureka:
   client:
@@ -33,7 +38,33 @@ zuul:
     users-alias:
       serviceId: users
       path: /users-alias/**       # 这里 users 服务是多节点 - 需要考虑的是 有部分节点 或者 服务 挂了情况
-
+  host:
+    connect-timeout-millis: 15000 # http 连接超时 必须大于 Hystrix 超时
+    socket-timeout-millis: 60000
+  retryable: on
 # 还未考虑到服务熔断  降级  限流
 
+# 超时时间 配置可能会影响到文件上传
+# users 可以在这加上 指定服务 针对不同服务进行配置
+ribbon:
+  # 可配置属性 见 com.netflix.client.config.CommonClientConfigKey
+  ConnectTimeout: 1000 #服务请求连接超时时间（毫秒）
+  ReadTimeout: 3000 #服务请求处理超时时间（毫秒）
+  MaxConnectionsPerHost: 50
+  ConnIdleEvictTimeMilliSeconds: 60000
+  OkToRetryOnAllOperations: true #对超时请求启用重试机制
+  MaxAutoRetriesNextServer: 1 #切换重试实例的最大个数
+  MaxAutoRetries: 1 # 切换实例后重试最大次数
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule #修改负载均衡算法(最小返回时间)
 
+# 熔断配置  只能针对整个服务 不能针对服务的指定接口
+feign:
+  hystrix:
+    enabled: on
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
