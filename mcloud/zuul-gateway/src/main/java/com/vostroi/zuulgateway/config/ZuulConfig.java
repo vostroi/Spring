@@ -1,5 +1,7 @@
 package com.vostroi.zuulgateway.config;
 
+import com.google.common.collect.ImmutableMap;
+import com.google.gson.GsonBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.netflix.zuul.filters.route.FallbackProvider;
 import org.springframework.http.HttpHeaders;
@@ -12,6 +14,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 
 /**
  * @author Administrator
@@ -65,7 +68,8 @@ public class ZuulConfig implements FallbackProvider {
 
             @Override
             public InputStream getBody() throws IOException {
-                return new ByteArrayInputStream("服务暂时忙，请稍候...".getBytes());
+                String result = new GsonBuilder().create().toJson(ImmutableMap.of("errorCode", 500, "content", "服务暂时忙，请稍候...", "time", LocalDateTime.now()));
+                return new ByteArrayInputStream(result.getBytes());
             }
 
             @Override

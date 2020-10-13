@@ -12,7 +12,7 @@ spring:
 info:
   app.name: mcloud-service-gateway-zuul
   app.author: vostroi
-  build.artifactId: users
+  build.artifactId: zuul-gateway
   build.groupId: com.vostroi
 
 

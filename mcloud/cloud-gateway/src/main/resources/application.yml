@@ -1,0 +1,51 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-gateway
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: true
+      retry:
+        enabled: on
+    gateway:
+      enabled: true
+      discovery:
+        locator:
+          enabled: true                                       # 开启从注册中心动态创建路由的功能
+          lower-case-service-id: true                         # 使用小写服务名，默认是大写
+      routes:
+        - id: users-provider                                  # 路由的ID-名称随便起
+          uri: lb://users                                     # 要跳转的目的地址
+          predicates:
+          - Path=/users-alias/**                              # 路由规则 - 适配请求
+#          filters:
+#          - StripPrefix=1
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://mcloud-eureka-server-03:9529/eureka/,http://mcloud-eureka-server-02:9528/eureka/,http://mcloud-eureka-server-01:9527/eureka/
+    #      defaultZone: http://mcloud-eureka-server-01:9527/eureka/
+    fetch-registry: on
+    registry-fetch-interval-seconds: 30
+  instance:
+    instance-id: cloud-gateway-80
+    prefer-ip-address: on
+    lease-renewal-interval-in-seconds: 30                     # 默认每 30 秒发送一次心跳
+    lease-expiration-duration-in-seconds: 90                  # 默认 90 服务端还未收到心跳 移出此服务
+    health-check-url: /actuator/health                        # 健康检查路径
+info:
+  app.name: mcloud-service-gateway-cloud
+  app.author: vostroi
+  build.artifactId: cloud-gateway
+  build.groupId: com.vostroi
+
