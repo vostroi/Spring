@@ -18,15 +18,28 @@ spring:
       enabled: true
       discovery:
         locator:
-          enabled: true                                       # 开启从注册中心动态创建路由的功能
-          lower-case-service-id: true                         # 使用小写服务名，默认是大写
-      routes:
-        - id: users-provider                                  # 路由的ID-名称随便起
-          uri: lb://users                                     # 要跳转的目的地址
+          enabled: true                            # 是否与服务注册发现组件进行结合，通过 serviceId 转发到具体的服务实例。默认为 false，设为 true 便开启通过服务中心的自动根据 serviceId 创建路由的功能
+          lower-case-service-id: true              # 表示将请求路径的服务名配置改成小写  因为服务注册的时候，向注册中心注册时将服务名转成大写的了
+      routes:                                      # 自定义 路由
+        - id: users-provider                       # 路由的ID-名称随便起
+          uri: lb://users                          # 要从注册中心获取的服务，且以负载均衡方式转发， 也就是要跳转的目的地址
+          predicates:                              # 断言
+          - Path=/hello/**                           # 路由规则 - 匹配请求
+          filters:
+          - StripPrefix=1                          # 将匹配所有 "/hello/" 开头的请求(除域名外和端口)，将去掉 1位路径即 "/hello" 拼接在 uri 后面得到目标地址进行转发
+#          - PrefixPath=/usr                        # 将在 Path 前加上"/usr", 拼接在 uri 后面得到目标地址进行转发
+          - name: Hystrix                          # 配置处理服务降级 后跳转地址
+            args:
+              name: abcde                          # 名称随便
+              fallbackUri: forward:/request-error/hystrix           # 要跳转的地址
+        - id: consumer-provider
+          uri: lb://consumer
           predicates:
-          - Path=/users-alias/**                              # 路由规则 - 适配请求
-#          filters:
-#          - StripPrefix=1
+          - Path=/request-error/hystrix
+          filters:
+          - name: FallbackHeaders                 # FallbackHeaders GatewayFilter Factory可以将Hystrix执行的异常信息添加到外部请求的fallbackUriheader上。
+            args:
+              executionExceptionTypeHeaderName: Hystrix-header
 
 
 
@@ -43,9 +56,25 @@ eureka:
     lease-renewal-interval-in-seconds: 30                     # 默认每 30 秒发送一次心跳
     lease-expiration-duration-in-seconds: 90                  # 默认 90 服务端还未收到心跳 移出此服务
     health-check-url: /actuator/health                        # 健康检查路径
+
+# 日志配置
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+
+
 info:
   app.name: mcloud-service-gateway-cloud
   app.author: vostroi
   build.artifactId: cloud-gateway
   build.groupId: com.vostroi
 
+# 配置 actuator 监控
+management:
+  endpoint:
+    gateway:
+      enabled: true                                           # 默认为 true
+  endpoints:
+    web:
+      exposure:
+        include: gateway

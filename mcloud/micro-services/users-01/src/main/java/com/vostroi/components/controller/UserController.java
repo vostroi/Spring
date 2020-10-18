@@ -6,10 +6,13 @@ import com.vostroi.api.users.bean.User;
 import com.vostroi.api.users.service.UserService;
 import com.vostroi.util.EnumConstant;
 import com.vostroi.util.ResultData;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 /**
@@ -19,6 +22,7 @@ import java.util.Date;
  * @title: UserController
  * @description: TODO
  */
+@Slf4j
 @RestController
 @RequestMapping(value = "/usr")
 public class UserController extends BaseController{
@@ -42,7 +46,8 @@ public class UserController extends BaseController{
     }
 
     @GetMapping(value = "/get/{id}")
-    public ResultData getUser(@PathVariable("id") String userId) {
+    public ResultData getUser(@PathVariable("id") String userId, HttpServletRequest request , HttpServletResponse response) {
+        log.info("foo={}",request.getParameter("foo"));
         User user = userService.findById(userId);
         return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, appPort + "###users-01",  user);
     }

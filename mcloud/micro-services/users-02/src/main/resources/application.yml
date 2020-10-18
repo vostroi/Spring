@@ -34,6 +34,6 @@ info:
   app.name: mcloud-service-users-02
   app.author: vostroi
   app.desc: for test
-  build.artifactId: consumer
+  build.artifactId: users
   build.groupId: com.vostroi
 
