@@ -16,6 +16,7 @@
         <module>eureka-server-03</module>
         <module>zuul-gateway</module>
         <module>cloud-gateway</module>
+        <module>cloud-config</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -38,7 +39,7 @@
         <joda-time.version>2.10.6</joda-time.version>
         <hutool.version>5.3.10</hutool.version>
         <eureka.version>2.2.4.RELEASE</eureka.version>
-        <cloud.starter.config.version>2.2.4.RELEASE</cloud.starter.config.version>
+        <cloud.starter.config.version>2.2.5.RELEASE</cloud.starter.config.version>
         <spring.boot.actuator.version>2.3.3.RELEASE</spring.boot.actuator.version>
     </properties>
 

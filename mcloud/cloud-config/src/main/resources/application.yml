@@ -1,0 +1,15 @@
+server:
+  port: 7070
+spring:
+  application:
+    name: cloud-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/vostroi/spring-cloud-config.git
+          default-label: main                                                                                           # 分支
+          search-paths: mcloud-configs,others-configs                                                                   # 这里暂时还有问题
+          username: vostroi
+          password: t51011983
+          force-pull: true                                                                                              # 如果提示 auth fail 加上

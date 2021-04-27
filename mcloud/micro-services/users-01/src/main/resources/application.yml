@@ -22,11 +22,17 @@ spring:
     hibernate:
       ddl-auto: update
 
+logging:
+  config: classpath:logback-spring.xml
+#  file:
+#    path: logs
+
+
 # 配置 eureka 客户端 注册到 服务端的 地址
 eureka:
   client:
     service-url:
-      defaultZone: http://mcloud-eureka-server-02:9528/eureka/,http://mcloud-eureka-server-01:9527/eureka/,http://mcloud-eureka-server-03:9529/eureka/
+    defaultZone: http://mcloud-eureka-server-02:9528/eureka/,http://mcloud-eureka-server-01:9527/eureka/,http://mcloud-eureka-server-03:9529/eureka/
   instance:
     instance-id: users-10086
     prefer-ip-address: true
@@ -36,4 +42,3 @@ info:
   app.desc: for test
   build.artifactId: users
   build.groupId: com.vostroi
-

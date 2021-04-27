@@ -8,7 +8,7 @@ spring:
 info:
   app.name: mcloud-service-consumer
   app.author: vostroi
-  build.artifactId: users
+  build.artifactId: consumer
   build.groupId: com.vostroi
 
 

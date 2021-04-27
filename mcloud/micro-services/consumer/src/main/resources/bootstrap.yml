@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      name: consumer                        # 要读取的配置文件名称
+      profile: test                          # 指定profile
+      label: main                           # 指定分支
+      uri: http://127.0.0.1:7070            # spring cloud config server 地址
