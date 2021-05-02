@@ -2,3 +2,11 @@
     1.自定义登录页面
     2.自定义登录逻辑校验，及登录结果返回，用户名密码都是配置的常量，密码事先加密好配置的常量
     3.梳理了security密码校验流程，见有道云笔记《Security 5 学习笔记》1-9步骤
+第二次提交，学习功能
+    1.以角色控制请求
+    2.以权限控制请求
+    3.自定义无权限处理，返回JSON
+    4.access表达式 官方文档表格 Expression-Based Access Control
+	5.基于access表达式 自定义对任意请求的权限控制 .anyRequest().access("@myAccessServiceImpl.hasPermission(request , authentication)")
+	6.基于注解权限控制，注释掉配置方式http.authorizeRequests()中hasRole等方法（默认注解方式未打开，需要开启）
+	7.rememberme 配置 持久化到数据库 JPA ， 使用hikari连接池 会导致不能写入数据库表中

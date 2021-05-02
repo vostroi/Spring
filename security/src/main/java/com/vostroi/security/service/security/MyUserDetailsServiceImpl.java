@@ -40,7 +40,7 @@ public class MyUserDetailsServiceImpl implements UserDetailsService {
         // 用户存在，比较密码（密码比较过程 security内部会调用验证）
 
         // 封装用户信息, 密码必须是加密后的密码（存在在数据库中的密码）
-        User user = new User(username, Constants.USER_NAME_ADMIN_PASSWORD_ENCODED , AuthorityUtils.commaSeparatedStringToAuthorityList("ADMIN,MANAGER"));
+        User user = new User(username, Constants.USER_NAME_ADMIN_PASSWORD_ENCODED , AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN,ROLE_MANAGER,READ,DELETE,DOWNLOAD,EXPORT"));
         log.info("loadUserByUsername={}", user);
         return user;
     }
