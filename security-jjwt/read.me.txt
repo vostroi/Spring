@@ -19,3 +19,4 @@
 	7.2 授权服务器，配置.tokenEnhancer(tokenEnhancerChain)
 	7.3 服务端解析 JWT TOKEN
 8.token有效时间及刷新token	
+9.集成单点登录，AuthorizationServerConfig作为单点登录的认证服务器，还需要新建项目作为客户端应用

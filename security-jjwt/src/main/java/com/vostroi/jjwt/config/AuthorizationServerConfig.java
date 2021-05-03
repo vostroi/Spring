@@ -11,6 +11,7 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.AccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
@@ -26,6 +27,7 @@ import java.util.List;
  * @projectName security-oauth2
  * @title: AuthorizationServerConfig
  * @description: 模拟oauth2授权服务器
+ * 授权服务器，这里作为集成单点登录的认证服务器
  */
 @Configuration
 @EnableAuthorizationServer
@@ -48,7 +50,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 // 客户端密钥
                 .secret(Constants.CLIENT_SECRET)
                 // 重定向地址
-                .redirectUris("https://www.baidu.com/")
+                    .redirectUris("http://127.0.0.1:10086/login")
                 // 授权范围
                 .scopes("all")
                 // 授权码模式 及 刷新令牌
@@ -57,6 +59,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .accessTokenValiditySeconds(60)
                 // 刷新令牌有效时间
                 .refreshTokenValiditySeconds(60*10)
+                // 配置自动授权（无需用户点击确诊授权）
+                // .autoApprove(true)
 
         ;
 
@@ -82,5 +86,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .tokenEnhancer(tokenEnhancerChain)
         ;
 
+    }
+
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+        // access表达式 配置必须要认证
+        security.tokenKeyAccess("isAuthenticated()");
     }
 }
