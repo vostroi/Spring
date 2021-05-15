@@ -1,0 +1,5 @@
+spring cloud Hoxton.SR11
+spring boot 2.3.10.RELEASE
+mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉，体验较差; 简单的select insert 都需要写SQL； spring data jpa相比就方便很多，直接写方法搞定
+2020.05.15
+    工程框架有了，抽象了公共dao service controller
