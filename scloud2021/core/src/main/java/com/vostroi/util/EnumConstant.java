@@ -110,4 +110,75 @@ public class EnumConstant {
         }
     }
 
+    /**
+     * 终端设备分类
+     */
+    public enum TERMINAL{
+        /**
+         * 电脑 1开头
+         */
+        PC("电脑" , 1) ,
+        /**
+         * 手机2开头
+         */
+        MOBILE("手机" , 2),
+        /**
+         * 手机 安卓
+         */
+        MBL_ANDTROID("安卓手机" , 21),
+        /**
+         * 手机 苹果
+         */
+        MBL_IOS("苹果手机" , 22),
+        /**
+         * 平板 3开头
+         */
+        PAD("平板" , 3),
+        /**
+         * 平板 安卓
+         */
+        PAD_ANDROID("安卓平板" , 31),
+        /**
+         * 平板 3开头
+         */
+        PAD_IOS("苹果平板" , 32)
+        ;
+
+        /**
+         * 中文描述
+         */
+        @Getter
+        private String name;
+        /**
+         * 值 存入于数据库中
+         */
+        @Getter
+        private int value;
+
+        TERMINAL(String name, int value){
+            this.name = name;
+            this.value = value;
+        }
+
+        public static String getName(int value){
+            for(TERMINAL t : TERMINAL.values()){
+                if(t.getValue() == value){
+                    return t.getName();
+                }
+            }
+            return "";
+        }
+
+        public static TERMINAL locateEnum(int value){
+            for(TERMINAL t : TERMINAL.values()){
+                if(t.getValue() == value){
+                    return t;
+                }
+            }
+            return null;
+        }
+    }
+
+
+
 }

@@ -1,7 +1,7 @@
-package com.vostroi.product.components.service.impl;
+package com.vostroi.product.components.service.impl.mobile;
 
 import com.vostroi.api.product.beans.Product;
-import com.vostroi.api.product.service.ProductMobileService;
+import com.vostroi.api.product.service.mobile.ProductMobileService;
 import com.vostroi.components.dao.BaseDao;
 import com.vostroi.product.components.dao.ProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +16,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ProductMobileServiceImpl implements ProductMobileService {
-    @Autowired
-    private ProductDao productDao;
+    @Autowired private ProductDao dao;
 
     @Override
     public BaseDao<Product, Long> getDao() {
-        return productDao;
+        return dao;
     }
 
 }

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.vostroi.customer.components.dao.CustomerDao">
+    <resultMap id="baseResultMap" type="com.vostroi.api.customer.beans.Customer" autoMapping="true">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result property="version" column="version" jdbcType="INTEGER" />
+        <result property="state" column="state" jdbcType="INTEGER" typeHandler="com.vostroi.util.mybatis.EnumRecordStateHandler"/>
+        <result property="crtTime" column="crt_time" jdbcType="TIMESTAMP"/>
+        <result property="lastUpdtTime" column="last_upt_time" />
+        <result property="crtUser" column="crt_user" jdbcType="BIGINT" />
+        <result property="lastUpdtUser" column="last_upt_user" jdbcType="BIGINT" />
+        <result property="orderNum" column="order_num" jdbcType="INTEGER" />
+        <result property="remark" column="remark" jdbcType="VARCHAR" />
+
+        <result property="name" column="name" jdbcType="VARCHAR" />
+        <result property="nickName" column="nick_name" jdbcType="VARCHAR" />
+        <result property="gender" column="gender" jdbcType="INTEGER" />
+        <result property="mobile" column="mobile" jdbcType="BIGINT" />
+        <result property="terminal" column="terminal" jdbcType="INTEGER" typeHandler="com.vostroi.util.mybatis.EnumRecordTerminalHandler"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="Customer" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `t_customer` (
+            `crt_time`,
+            `crt_user`,
+            `last_upt_time`,
+            `last_upt_user`,
+            `state`,
+            `version`,
+            `order_num`,
+            `remark`,
+
+            `name`,
+            `nick_name`,
+            `gender`,
+            `mobile`,
+            `terminal`
+        )
+        VALUES
+        (
+            #{crtTime},
+            #{crtUser},
+            #{lastUpdtTime},
+            #{lastUpdtUser},
+            #{state , typeHandler=com.vostroi.util.mybatis.EnumRecordStateHandler},
+            #{version},
+            #{orderNum},
+            #{remark},
+
+            #{name},
+            #{nickName},
+            #{gender},
+            #{mobile},
+            #{terminal, typeHandler=com.vostroi.util.mybatis.EnumRecordTerminalHandler}
+        );
+    </insert>
+
+    <update id="update" parameterType="Customer">
+        update `t_customer` set
+            `crt_time` = #{crtTime},
+            `crt_user` = #{crtUser},
+            `last_upt_time` =   #{lastUpdtTime},
+            `last_upt_user` =   #{lastUpdtUser},
+            `state` =   #{state , typeHandler=com.vostroi.util.mybatis.EnumRecordStateHandler},
+            `version` = #{version},
+            `order_num` =#{orderNum},
+            `remark` =  #{remark},
+
+            `name` =   #{name},
+            `nick_name` =  #{nickName},
+            `gender` = #{gender},
+            `mobile` =  #{mobile},
+            `terminal` =   #{terminal,typeHandler=com.vostroi.util.mybatis.EnumRecordTerminalHandler}
+        where `id` = #{id}
+    </update>
+
+    <select id="select" parameterType="Long" resultMap="baseResultMap">
+        select * from `t_customer` where id = #{id};
+    </select>
+</mapper>

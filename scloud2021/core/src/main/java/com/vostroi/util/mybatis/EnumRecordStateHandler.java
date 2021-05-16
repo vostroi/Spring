@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * @date 2021/5/15 17:43
  * @projectName scloud2021
  * @title: EnumRecordStateHandler
- * @description: mybatis 枚举类型转换器
+ * @description: mybatis RECORD_STATE 枚举类型转换器
  */
 public class EnumRecordStateHandler extends BaseTypeHandler<EnumConstant.RECORD_STATE> {
     /**

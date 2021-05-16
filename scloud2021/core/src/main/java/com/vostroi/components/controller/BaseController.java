@@ -6,8 +6,10 @@ import com.vostroi.util.EnumConstant;
 import com.vostroi.util.ResultData;
 import com.vostroi.util.spring.ParamDateEditor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
@@ -32,9 +34,13 @@ public abstract class BaseController<T extends BaseEntity, ID extends Serializab
      */
 //    public RedisUtil getRedisUtil();
 
-//    @Autowired private RestTemplate restTemplate;
+    @Autowired private RestTemplate restTemplate;
 
     public abstract BaseService<T, ID> getService();
+
+    public RestTemplate getRestTemplate(){
+        return this.restTemplate;
+    }
 
     /**
      * 根据id获取对象

@@ -3,8 +3,6 @@ package com.vostroi.components.dao;
 import com.vostroi.components.entity.BaseEntity;
 import org.apache.ibatis.annotations.Param;
 
-import java.io.Serializable;
-
 /**
  * @author Administrator
  * @date 2021/5/15 17:05

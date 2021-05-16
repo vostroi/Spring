@@ -12,6 +12,7 @@
         <module>mico-services</module>
         <module>core</module>
         <module>api</module>
+        <module>eureka-deprecated</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -37,6 +38,7 @@
         <spring.boot.version>2.3.10.RELEASE</spring.boot.version>
         <spring.cloud.version>Hoxton.SR11</spring.cloud.version>
         <cloud.alibaba.verion>2.2.5.RELEASE</cloud.alibaba.verion>
+        <spring.cloud.starter.version>2.2.8.RELEASE</spring.cloud.starter.version>
     </properties>
 
 
@@ -66,6 +68,11 @@
                 <version>${cloud.alibaba.verion}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter</artifactId>
+                <version>${spring.cloud.starter.version}</version>
             </dependency>
 
             <dependency>
