@@ -16,3 +16,5 @@ mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉
     服务健康检查         支持（可配）                             支持                                           支持
     对外暴露接口         http                                    客户端                                           http/dns
     spring cloud集成    集成                                    集成                                           集成
+2020.06.15
+    继续使用zookeeper 学习
