@@ -5,3 +5,14 @@ mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉
     工程框架有了，抽象了公共dao service controller
 2020.05.30
     注释了eureka注册中心配置，学习使用zookeeper
+2020.06.15
+    zookeeper 集群 （windows 参考springcloud 有道笔记）
+2020.06.15
+    注释zookeeper ， 学习使用consul
+    区别：
+                        eureka                                 zookeeper                                      consul
+    开发语言            JAVA                                    JAVA                                           GO
+    CAP                 AP                                       CP                                           CP
+    服务健康检查         支持（可配）                             支持                                           支持
+    对外暴露接口         http                                    客户端                                           http/dns
+    spring cloud集成    集成                                    集成                                           集成
