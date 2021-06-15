@@ -39,7 +39,6 @@ public class ProductMobileController extends BaseController<Product , Long> {
      */
     @GetMapping(value = "/dtl/{skuId}")
     public ResultData<String> getSkuDetail(@PathVariable("skuId") Long skuId){
-
         return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, "商品数据" + "端口：" + serverPort);
     }
 

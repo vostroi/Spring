@@ -30,4 +30,5 @@ public class SpringConfig {
     public RestTemplate restTemplate(ClientHttpRequestFactory factory) {
         return new RestTemplate(factory);
     }
+
 }

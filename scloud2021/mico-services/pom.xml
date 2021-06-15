@@ -83,15 +83,35 @@
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
 
-
+        <!--不注释，会有启动问题
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
+        -->
+
+        <!--学习使用zookeeper 暂时不使用eureka-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.zookeeper</groupId>
+                    <artifactId>3.5.3-beta</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- 引入与zookeeper服务版本匹配的jar， 排除不匹配的版本-上面 -->
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.5.5</version>
+        </dependency>
 
 
 
-<!--        <dependency>-->
+
+        <!--        <dependency>-->
 <!--            <groupId>org.springframework.cloud</groupId>-->
 <!--            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>-->
 <!--        </dependency>-->
