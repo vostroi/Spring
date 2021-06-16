@@ -1,5 +1,6 @@
 package com.vostroi.product.components.controller.mobile;
 
+import cn.hutool.json.JSONUtil;
 import com.vostroi.api.product.beans.Product;
 import com.vostroi.api.product.service.mobile.ProductMobileService;
 import com.vostroi.components.controller.BaseController;
@@ -39,7 +40,8 @@ public class ProductMobileController extends BaseController<Product , Long> {
      */
     @GetMapping(value = "/dtl/{skuId}")
     public ResultData<String> getSkuDetail(@PathVariable("skuId") Long skuId){
-        return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, "商品数据" + "端口：" + serverPort);
+        Product product = service.get(skuId);
+        return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, "商品数据：" + JSONUtil.toJsonStr(product) + "端口：" + serverPort);
     }
 
 }

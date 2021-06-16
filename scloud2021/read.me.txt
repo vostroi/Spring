@@ -18,3 +18,7 @@ mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉
     spring cloud集成    集成                                    集成                                           集成
 2020.06.15
     继续使用zookeeper 学习
+2020.06.15
+    ribbon学习
+        com.vostroi.customer.components.config.CustomerSpringConfig 能被 spring 扫描到， 会对所有 provider 起效
+        com.vostroi.custom.ProductServiceRibbonRule 配置 @RibbonClients 可对不同的 provider 定制负载均衡

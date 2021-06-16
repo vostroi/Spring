@@ -10,6 +10,7 @@ import com.vostroi.util.ResultData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +42,12 @@ public class CustomerMobileController extends BaseController<Customer, Long> {
 
     @GetMapping(value = "/prd/dtl/{skuId}")
     public ResultData<Product> productDetail(@PathVariable("skuId") Long skuId){
+
+        ResponseEntity<ResultData> entity = this.getRestTemplate().getForEntity(MicroServiceName.MICRO_SERVER_PRODUCT+ "/prd/mbl/dtl/{1}", ResultData.class,skuId);
+        log.info("status_code={},status={}",entity.getStatusCode(),entity.getStatusCodeValue());
+        ResultData body = entity.getBody();
+        log.info("body={}" , body);
+
         return this.getRestTemplate().getForObject(MicroServiceName.MICRO_SERVER_PRODUCT + "/prd/mbl/dtl/" + skuId, ResultData.class);
     }
 
