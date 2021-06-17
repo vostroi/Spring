@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author Administrator
  * @date 2021/5/15 15:37
@@ -45,4 +47,19 @@ public class ProductMobileController extends BaseController<Product , Long> {
         return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, "商品数据：" + JSONUtil.toJsonStr(product) + "端口：" + serverPort);
     }
 
+    /**
+     * 测试服务商超时
+     * @param skuId
+     * @return
+     */
+    @GetMapping(value = "/dtl/timeout/{skuId}")
+    public ResultData<String> getSkuDetailTimeout(@PathVariable("skuId") Long skuId){
+        Product product = service.get(skuId);
+        try {
+            TimeUnit.SECONDS.sleep(4);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, "商品数据：" + JSONUtil.toJsonStr(product) + "端口：" + serverPort);
+    }
 }

@@ -3,13 +3,13 @@ package com.vostroi.customer.components.controller.mobile;
 import com.vostroi.api.customer.beans.Customer;
 import com.vostroi.api.customer.service.mobile.CustomerMobileService;
 import com.vostroi.api.product.beans.Product;
+import com.vostroi.api.product.feign.mobile.ProductMobileClient;
 import com.vostroi.components.controller.BaseController;
 import com.vostroi.components.service.BaseService;
 import com.vostroi.util.MicroServiceName;
 import com.vostroi.util.ResultData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/cust/mbl")
 public class CustomerMobileController extends BaseController<Customer, Long> {
     @Autowired private CustomerMobileService service;
-
+    @Autowired  private ProductMobileClient productMobileClient;
     @Override
     public BaseService getService() {
         return service;
@@ -51,6 +51,34 @@ public class CustomerMobileController extends BaseController<Customer, Long> {
         return this.getRestTemplate().getForObject(MicroServiceName.MICRO_SERVER_PRODUCT + "/prd/mbl/dtl/" + skuId, ResultData.class);
     }
 
+    /**
+     * 测试使用 Feign 调用
+     * @param skuId
+     * @return
+     */
+    @GetMapping(value="/fei/prd/dtl/{skuId}")
+    public ResultData<String> productDetailFeign(@PathVariable("skuId") Long skuId){
+        return productMobileClient.getSkuDetail(skuId);
+    }
 
+    /**
+     * 测试使用 Feign 调用  抽象了 BaseFeignClient 无法正常工作
+     * @param productId
+     * @return
+     */
+//    @GetMapping(value="/fei/prd/get/{productId}")
+//    public ResultData<Product> productGetFeign(@PathVariable("productId") String productId){
+//        return productMobileClient.get(productId);
+//    }
+
+    /**
+     * Feign 客户端默认1秒超时
+     * @param skuId
+     * @return
+     */
+    @GetMapping(value="/fei/timeout/prd/dtl/{skuId}")
+    public ResultData<String> productDetailFeignTimeOut(@PathVariable("skuId") Long skuId){
+        return productMobileClient.getSkuDetailTimeout(skuId);
+    }
 
 }
