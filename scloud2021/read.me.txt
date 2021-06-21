@@ -26,3 +26,4 @@ mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉
     feign学习
         feign不能注入，@EnableFeignClients(basePackages = {})确保Feign被扫描到
         feign针对不同 provider 定制超时时间
+        feign开启日志

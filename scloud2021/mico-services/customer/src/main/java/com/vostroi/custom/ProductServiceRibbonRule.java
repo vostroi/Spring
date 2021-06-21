@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2021/6/16 22:13
  * @projectName scloud2021
  * @title: CustomerRibbonRule
- * @description: TODO
+ * @description: Ribbon针对不同provider，不同的负载均衡策略，不能被springboot扫描到
  */
 @Configuration
 public class ProductServiceRibbonRule {
