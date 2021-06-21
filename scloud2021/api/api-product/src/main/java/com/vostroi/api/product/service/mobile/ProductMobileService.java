@@ -12,6 +12,18 @@ import com.vostroi.components.service.BaseService;
  */
 public interface ProductMobileService extends BaseService<Product,Long> {
 
+    /**
+     * 测试 Hystrix 方法正确执行
+     * @param id
+     * @return
+     */
+    public Product hystrixRightMethod(Long id);
 
+    /**
+     * 测试 hystrix 方法执行异常
+     * @param id
+     * @return
+     */
+    public Product hystrixErrorMethod(Long id);
 
 }

@@ -63,4 +63,26 @@ public class ProductMobileController extends BaseController<Product , Long> {
         return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, "商品数据：" + JSONUtil.toJsonStr(product) + "端口：" + serverPort);
     }
 
+
+    /**
+     * 测试 Hystrix 正常执行
+     * @param skuId
+     * @return
+     */
+    @GetMapping(value = "/dtl/hystrix/right/{skuId}")
+    public ResultData<String> getSkuDetailHystrixRight(@PathVariable("skuId") Long skuId){
+        Product product = service.hystrixRightMethod(skuId);
+        return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, "商品数据：" + JSONUtil.toJsonStr(product) + "端口：" + serverPort);
+    }
+
+    /**
+     * 测试 Hystrix 执行 超时/出错
+     * @param skuId
+     * @return
+     */
+    @GetMapping(value = "/dtl/hystrix/error/{skuId}")
+    public ResultData<String> getSkuDetailHystrixError(@PathVariable("skuId") Long skuId){
+        Product product = service.hystrixErrorMethod(skuId);
+        return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, "商品数据：" + JSONUtil.toJsonStr(product) + "端口：" + serverPort);
+    }
 }

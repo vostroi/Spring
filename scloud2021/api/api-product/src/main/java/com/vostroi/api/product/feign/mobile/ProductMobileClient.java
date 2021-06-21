@@ -1,7 +1,9 @@
 package com.vostroi.api.product.feign.mobile;
 
+import cn.hutool.json.JSONUtil;
 import com.vostroi.api.product.beans.Product;
 import com.vostroi.feign.BaseFeignClient;
+import com.vostroi.util.EnumConstant;
 import com.vostroi.util.ResultData;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
@@ -26,6 +28,22 @@ public interface ProductMobileClient /*extends BaseFeignClient*/ {
     ResultData<String> getSkuDetail(@PathVariable("skuId") Long skuId);
 
     @GetMapping(value = "/dtl/timeout/{skuId}")
-    public ResultData<String> getSkuDetailTimeout(@PathVariable("skuId") Long skuId);
+    ResultData<String> getSkuDetailTimeout(@PathVariable("skuId") Long skuId);
+
+    /**
+     * 测试 Hystrix 正常执行
+     * @param skuId
+     * @return
+     */
+    @GetMapping(value = "/dtl/hystrix/right/{skuId}")
+    ResultData<String> getSkuDetailHystrixRight(@PathVariable("skuId") Long skuId);
+
+    /**
+     * 测试 Hystrix 执行 超时/出错
+     * @param skuId
+     * @return
+     */
+    @GetMapping(value = "/dtl/hystrix/error/{skuId}")
+    ResultData<String> getSkuDetailHystrixError(@PathVariable("skuId") Long skuId);
 
 }
