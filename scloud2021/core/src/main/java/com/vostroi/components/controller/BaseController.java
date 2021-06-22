@@ -118,6 +118,7 @@ public abstract class BaseController<T extends BaseEntity, ID extends Serializab
      * @return
      */
     private ResultData<String> timeOutHandler(Long skuId){
+        log.info("timeOutHandler Thread={}", Thread.currentThread().getName());
         return ResultData.getResultData(EnumConstant.RESULT_CODE.ER_3333_2222 , EnumConstant.RESULT_CODE.ER_3333_2222.getCode());
     }
 

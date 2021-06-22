@@ -1,5 +1,7 @@
 package com.vostroi.customer.components.controller.mobile;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.vostroi.api.customer.beans.Customer;
 import com.vostroi.api.customer.service.mobile.CustomerMobileService;
 import com.vostroi.api.product.beans.Product;
@@ -10,6 +12,7 @@ import com.vostroi.util.MicroServiceName;
 import com.vostroi.util.ResultData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.netflix.hystrix.HystrixProperties;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -87,6 +90,11 @@ public class CustomerMobileController extends BaseController<Customer, Long> {
     }
 
     @GetMapping(value="/hystrix/error/prd/dtl/{skuId}")
+    // 被调用服务超时，异常都会触发（本方法出错也会触发）
+    @HystrixCommand(fallbackMethod = "timeOutHandler" , commandProperties = {
+            // 定义调用provider接口超时时间
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")
+    })
     public ResultData<String> productDetailHystrixError(@PathVariable("skuId") Long skuId){
         return productMobileClient.getSkuDetailHystrixError(skuId);
     }

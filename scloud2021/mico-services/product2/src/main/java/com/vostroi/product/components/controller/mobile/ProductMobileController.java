@@ -84,7 +84,7 @@ public class ProductMobileController extends BaseController<Product , Long> {
     @HystrixCommand(fallbackMethod = "timeOutHandler" , commandProperties = {
             // 指定接口配置超时，否则使用统一超时配置
             // 更多配置 com.netflix.hystrix.HystrixCommandProperties
-            //@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "500")
+            //@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "5000")
             // 出错，异常也会触发
     })
     public ResultData<String> getSkuDetailHystrixError(@PathVariable("skuId") Long skuId){
