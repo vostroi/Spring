@@ -81,4 +81,14 @@ public class CustomerMobileController extends BaseController<Customer, Long> {
         return productMobileClient.getSkuDetailTimeout(skuId);
     }
 
+    @GetMapping(value="/hystrix/right/prd/dtl/{skuId}")
+    public ResultData<String> productDetailHystrixRight(@PathVariable("skuId") Long skuId){
+        return productMobileClient.getSkuDetailHystrixRight(skuId);
+    }
+
+    @GetMapping(value="/hystrix/error/prd/dtl/{skuId}")
+    public ResultData<String> productDetailHystrixError(@PathVariable("skuId") Long skuId){
+        return productMobileClient.getSkuDetailHystrixError(skuId);
+    }
+
 }

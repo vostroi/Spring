@@ -111,4 +111,14 @@ public abstract class BaseController<T extends BaseEntity, ID extends Serializab
         binder.registerCustomEditor(Date.class, new ParamDateEditor());
     }
 
+
+    /**
+     * HystrixCommand fallback调用，要求参数与 @HystrixCommand 所注解的参数一致
+     * @param skuId
+     * @return
+     */
+    private ResultData<String> timeOutHandler(Long skuId){
+        return ResultData.getResultData(EnumConstant.RESULT_CODE.ER_3333_2222 , EnumConstant.RESULT_CODE.ER_3333_2222.getCode());
+    }
+
 }

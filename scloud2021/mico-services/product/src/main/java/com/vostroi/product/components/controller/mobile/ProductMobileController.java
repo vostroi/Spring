@@ -1,6 +1,8 @@
 package com.vostroi.product.components.controller.mobile;
 
 import cn.hutool.json.JSONUtil;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.vostroi.api.product.beans.Product;
 import com.vostroi.api.product.service.mobile.ProductMobileService;
 import com.vostroi.components.controller.BaseController;
@@ -81,8 +83,15 @@ public class ProductMobileController extends BaseController<Product , Long> {
      * @return
      */
     @GetMapping(value = "/dtl/hystrix/error/{skuId}")
+    @HystrixCommand(fallbackMethod = "timeOutHandler" , commandProperties = {
+            // 指定接口配置超时，否则使用统一超时配置
+            // 更多配置 com.netflix.hystrix.HystrixCommandProperties
+            //@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "500")
+            // 出错，异常也会触发
+    })
     public ResultData<String> getSkuDetailHystrixError(@PathVariable("skuId") Long skuId){
         Product product = service.hystrixErrorMethod(skuId);
         return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, "商品数据：" + JSONUtil.toJsonStr(product) + "端口：" + serverPort);
     }
+
 }
