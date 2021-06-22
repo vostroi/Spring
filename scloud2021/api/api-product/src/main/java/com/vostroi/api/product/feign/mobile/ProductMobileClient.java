@@ -1,12 +1,7 @@
 package com.vostroi.api.product.feign.mobile;
 
-import cn.hutool.json.JSONUtil;
-import com.vostroi.api.product.beans.Product;
-import com.vostroi.feign.BaseFeignClient;
-import com.vostroi.util.EnumConstant;
 import com.vostroi.util.ResultData;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * value 服务提供方 服务名
  * fallbackFactory 处理服务降级
  */
-@FeignClient(value = "service-product" /** , fallbackFactory = */ )
+@FeignClient(value = "service-product" , fallbackFactory = ProductMobileClientFallbackFactory.class )
+//@FeignClient(value = "service-product" , fallback = ProductMobileClientFallback.class)
 @RequestMapping(value = "/prd/mbl")
 public interface ProductMobileClient /*extends BaseFeignClient*/ {
 

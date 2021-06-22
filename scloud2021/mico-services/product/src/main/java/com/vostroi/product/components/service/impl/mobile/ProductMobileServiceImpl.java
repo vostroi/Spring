@@ -37,7 +37,7 @@ public class ProductMobileServiceImpl implements ProductMobileService {
     public Product hystrixErrorMethod(Long id) {
         // 模拟超时
         try {
-            TimeUnit.SECONDS.sleep(10);
+            TimeUnit.SECONDS.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

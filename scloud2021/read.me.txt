@@ -32,3 +32,5 @@ mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉
         provider 新增两个测试接口 一个正常访问，一个设置超时，并完成从consumer到provider的调用，jemter模拟高并发请求consumer超时的接口，会导致consumer的其它正常接口也变慢（高并发的请求太多，consumer资源被长时间占用严重）
         provider端增加hystrix
         consumer端增加hystrix
+        @DefaultProperties(defaultFallback = "timeOutHandler") 来解决在每个调用服务的方法定制fallback方法，仍然需要@HystrixCommand注解，还是有代码耦合
+        结合FeignClient 解决代码耦合，同时无需@HystrixCommand注解

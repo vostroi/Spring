@@ -1,5 +1,6 @@
 package com.vostroi.customer.components.controller.mobile;
 
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.vostroi.api.customer.beans.Customer;
@@ -30,6 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequestMapping(value = "/cust/mbl")
+@DefaultProperties(defaultFallback = "timeOutHandler")
 public class CustomerMobileController extends BaseController<Customer, Long> {
     @Autowired private CustomerMobileService service;
     @Autowired  private ProductMobileClient productMobileClient;
@@ -91,11 +93,23 @@ public class CustomerMobileController extends BaseController<Customer, Long> {
 
     @GetMapping(value="/hystrix/error/prd/dtl/{skuId}")
     // 被调用服务超时，异常都会触发（本方法出错也会触发）
-    @HystrixCommand(fallbackMethod = "timeOutHandler" , commandProperties = {
-            // 定义调用provider接口超时时间
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")
-    })
+//    @HystrixCommand(fallbackMethod = "timeOutHandler" , commandProperties = {
+//            // 定义调用provider接口超时时间
+//            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")
+//    })
+    // 没定制fallback 使用全局的 fallback（在类上定义@DefaultProperties）
+    @HystrixCommand
     public ResultData<String> productDetailHystrixError(@PathVariable("skuId") Long skuId){
+        return productMobileClient.getSkuDetailHystrixError(skuId);
+    }
+
+    /**
+     * 使用统一的降级处理 结合了FeignClient实现
+     * @param skuId
+     * @return
+     */
+    @GetMapping(value="/hystrix/error/uni/prd/dtl/{skuId}")
+    public ResultData<String> productDetailHystrixErrorUnified(@PathVariable("skuId") Long skuId){
         return productMobileClient.getSkuDetailHystrixError(skuId);
     }
 

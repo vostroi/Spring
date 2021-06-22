@@ -113,11 +113,16 @@ public abstract class BaseController<T extends BaseEntity, ID extends Serializab
 
 
     /**
-     * HystrixCommand fallback调用，要求参数与 @HystrixCommand 所注解的参数一致
+     * HystrixCommand fallback调用，针对方法定制fallback要求参数与 @HystrixCommand 所注解的方法参数一致
      * @param skuId
      * @return
      */
     private ResultData<String> timeOutHandler(Long skuId){
+        log.info("timeOutHandler Thread={}", Thread.currentThread().getName());
+        return ResultData.getResultData(EnumConstant.RESULT_CODE.ER_3333_2222 , EnumConstant.RESULT_CODE.ER_3333_2222.getCode());
+    }
+
+    private ResultData<String> timeOutHandler(){
         log.info("timeOutHandler Thread={}", Thread.currentThread().getName());
         return ResultData.getResultData(EnumConstant.RESULT_CODE.ER_3333_2222 , EnumConstant.RESULT_CODE.ER_3333_2222.getCode());
     }
