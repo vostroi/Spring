@@ -104,7 +104,7 @@ public class CustomerMobileController extends BaseController<Customer, Long> {
     }
 
     /**
-     * 使用统一的降级处理 结合了FeignClient实现
+     * 使用统一的降级处理 结合了FeignClient实现（不用@HystrixCommand注解）
      * @param skuId
      * @return
      */
@@ -112,5 +112,6 @@ public class CustomerMobileController extends BaseController<Customer, Long> {
     public ResultData<String> productDetailHystrixErrorUnified(@PathVariable("skuId") Long skuId){
         return productMobileClient.getSkuDetailHystrixError(skuId);
     }
+
 
 }

@@ -34,3 +34,6 @@ mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉
         consumer端增加hystrix
         @DefaultProperties(defaultFallback = "timeOutHandler") 来解决在每个调用服务的方法定制fallback方法，仍然需要@HystrixCommand注解，还是有代码耦合
         结合FeignClient 解决代码耦合，同时无需@HystrixCommand注解
+        熔断学习
+        HystrixDashboard:解决HystrixDashboard连接不上问题，见云笔记
+        优化了pom依赖关系

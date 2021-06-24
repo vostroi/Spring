@@ -65,7 +65,7 @@ public class ProductMobileController extends BaseController<Product , Long> {
         return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, "商品数据：" + JSONUtil.toJsonStr(product) + "端口：" + serverPort);
     }
 
-
+    // 服务降级START
     /**
      * 测试 Hystrix 正常执行
      * @param skuId
@@ -93,5 +93,10 @@ public class ProductMobileController extends BaseController<Product , Long> {
         Product product = service.hystrixErrorMethod(skuId);
         return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, "商品数据：" + JSONUtil.toJsonStr(product) + "端口：" + serverPort);
     }
+    // 服务降级END
 
+
+    // 服务熔断测试START
+
+    // 服务熔断测试END
 }

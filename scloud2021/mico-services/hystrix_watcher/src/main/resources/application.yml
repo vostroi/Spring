@@ -1,0 +1,8 @@
+server:
+  port: 10000
+spring:
+  application:
+    name: hystrix_watcher
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: "127.0.0.1,localhost"

@@ -1,5 +1,7 @@
 package com.vostroi.components.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.vostroi.components.entity.BaseEntity;
 import com.vostroi.components.service.BaseService;
 import com.vostroi.util.EnumConstant;
@@ -26,6 +28,16 @@ import java.util.Map;
 @RestController
 @CrossOrigin("*")
 @Slf4j
+@DefaultProperties(defaultFallback = "circuitBreakerHandler" , commandProperties = {
+        // 是否开启断路器熔断功能
+        @HystrixProperty(name = "circuitBreaker.enabled" , value = "true"),
+        // 最低请求次数（时间窗口期内达到最低请求次数才生效）
+        @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "20"),
+        // 时间窗口期
+        @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "60000"),
+        // 失败率达到该值后熔断
+        @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage",value = "80")
+})
 public abstract class BaseController<T extends BaseEntity, ID extends Serializable> {
 
     /**
@@ -125,6 +137,15 @@ public abstract class BaseController<T extends BaseEntity, ID extends Serializab
     private ResultData<String> timeOutHandler(){
         log.info("timeOutHandler Thread={}", Thread.currentThread().getName());
         return ResultData.getResultData(EnumConstant.RESULT_CODE.ER_3333_2222 , EnumConstant.RESULT_CODE.ER_3333_2222.getCode());
+    }
+
+    /**
+     * 熔断的fallback
+     * @return
+     */
+    private ResultData<String> circuitBreakerHandler(){
+        log.info("circuitBreakerHandler Thread={}", Thread.currentThread().getName());
+        return ResultData.getResultData(EnumConstant.RESULT_CODE.ER_3333_1111 , EnumConstant.RESULT_CODE.ER_3333_1111.getCode());
     }
 
 }
