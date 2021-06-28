@@ -17,6 +17,7 @@
         <module>product</module>
         <module>product2</module>
         <module>hystrix_watcher</module>
+        <module>gateway</module>
     </modules>
 
     <dependencyManagement>

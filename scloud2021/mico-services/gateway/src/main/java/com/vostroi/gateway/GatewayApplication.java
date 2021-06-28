@@ -1,22 +1,20 @@
-package com.vostroi.hystrix;
+package com.vostroi.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 
 /**
  * @author Administrator
- * @date 2021/6/23 23:58
+ * @date 2021/6/27 16:31
  * @projectName scloud2021
- * @title: DashboardApplication
- * @description:
+ * @title: GatewayApplication
+ * @description: TODO
  */
 @SpringBootApplication
-@EnableHystrixDashboard
 @EnableDiscoveryClient
-public class DashboardApplication {
+public class GatewayApplication {
     public static void main(String[] args) {
-        SpringApplication.run(DashboardApplication.class, args);
+        SpringApplication.run(GatewayApplication.class, args);
     }
 }
