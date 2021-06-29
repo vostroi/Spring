@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      label: main
+      name: customer
+      profile: dev
+      uri: http://127.0.0.1:3344

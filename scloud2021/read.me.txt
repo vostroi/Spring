@@ -39,3 +39,6 @@ mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉
         优化了pom依赖关系
 2020.06.27
     SpringCloud Gateway学习
+2020.06.29
+    SpringCloud Config学习
+    config server模块
