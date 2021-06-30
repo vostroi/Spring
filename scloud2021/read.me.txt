@@ -42,3 +42,4 @@ mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉
 2020.06.29
     SpringCloud Config学习
     config server模块
+    整合 spring cloud bus 实现 配置文件动态刷新

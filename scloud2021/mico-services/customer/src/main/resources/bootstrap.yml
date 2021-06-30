@@ -5,3 +5,17 @@ spring:
       name: customer
       profile: dev
       uri: http://127.0.0.1:3344
+
+  ## 加入spring cloud bus后 配置 rabbitmq相关
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+## 暴露监控端口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

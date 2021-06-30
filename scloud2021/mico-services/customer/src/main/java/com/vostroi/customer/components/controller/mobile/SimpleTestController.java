@@ -3,6 +3,7 @@ package com.vostroi.customer.components.controller.mobile;
 import com.vostroi.util.EnumConstant;
 import com.vostroi.util.ResultData;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @title: SimpleTestController
  * @description: 简单的测试
  */
+@RefreshScope
 @RestController
 @RequestMapping(value = "/spl")
 public class SimpleTestController {
