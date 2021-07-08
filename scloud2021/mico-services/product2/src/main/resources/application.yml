@@ -1,0 +1,21 @@
+server:
+  port: 10092
+spring:
+  application:
+    name: service-product
+  # dbsource config
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    data-username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/vst_product?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=Asia/Shanghai
+# mybatis configs
+mybatis:
+  mapper-locations: classpath:mapper/mapper.*.xml
+  type-aliases-package: com.vostroi.api.product.beans
+
+    org:
+      springboot:
+        demo:
+          mapper: info

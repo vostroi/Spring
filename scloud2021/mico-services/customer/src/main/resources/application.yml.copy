@@ -1,0 +1,113 @@
+server:
+  port: 10091
+spring:
+  application:
+    name: service-customer
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/vst_customer?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=Asia/Shanghai
+    username: root
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+  cloud:
+    zookeeper:
+      connect-string: 127.0.0.1:2181
+      discovery:
+        enabled: true
+    config:
+      label: main
+      name: customer
+      profile: dev
+      uri: http://127.0.0.1:3344
+    stream:
+      # 目标绑定器： 名称是（自定义） my_rabbit ， 类型是 rabbitmq , environment 是 rabbitmq的环境信息
+      # 可以配置多个 目标绑定器 满足不同场景
+      binders:
+        my_rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 127.0.0.1
+                port: 5672
+                username: guest
+                password: guest
+      #        ur_rabbit:
+      #          type: rabbit
+      #          environment:
+      #            spring:
+      #              rabbitmq:
+      #                host: 127.0.0.1
+      #                port: 5672
+      #                username: guest
+      #                password: guest
+      # bindings 对应上面的binder  可以配置多个 input（消息接收通道，下面的 my_input）和output（消息发送通道 ， 下面的 my_output）--对应到rabbitmq就是不同的exchange
+      bindings:
+        # my_input 自定义的 通道名称
+        my_input:
+          # destination 指的就是 rabbitmq的exchange
+          destination: default.message
+          binder: my_rabbit
+          content-type: application/json
+          # 服务可能有多个节点，没必要每个节点都消费同一个消息，只需要把节点的group配置成相同的，那么只有一个节点消费，避免重复消费，如果设置了group，那么group名称就是queue的名称，
+          # 如果不设置group ， queue就会根据 destination+随机的方式名称
+          group:
+        my_output:
+          destination: default.message
+          binder: my_rabbit
+          content-type: application/json
+
+  ## 加入spring cloud bus后 配置 rabbitmq相关
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+mybatis:
+  mapper-locations: classpath:mapper/mapper.*.xml
+  type-aliases-package: com.vostroi.api.customer.beans
+
+## 暴露监控端口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+
+feign:
+  client:
+    config:
+      service-product:
+        connect-timeout: 5000
+        read-timeout: 5000
+  hystrix:
+    enabled: true
+
+logging:
+  level:
+    com:
+      vostroi:
+        api:
+          product:
+            feign:
+              mobile:
+                ProductMobileClient: debug
+    org:
+      springboot:
+        demo:
+          mapper: debug
+

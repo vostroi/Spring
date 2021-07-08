@@ -39,6 +39,7 @@
         <spring.cloud.version>Hoxton.SR11</spring.cloud.version>
         <cloud.alibaba.verion>2.2.5.RELEASE</cloud.alibaba.verion>
         <spring.cloud.starter.version>2.2.8.RELEASE</spring.cloud.starter.version>
+        <cloud.stream.rabbit>3.0.12.RELEASE</cloud.stream.rabbit>
     </properties>
 
 

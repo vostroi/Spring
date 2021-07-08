@@ -19,6 +19,8 @@
         <module>hystrix_watcher</module>
         <module>gateway</module>
         <module>config_center</module>
+        <module>order</module>
+        <module>order2</module>
     </modules>
 
     <dependencyManagement>

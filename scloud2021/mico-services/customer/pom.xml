@@ -25,7 +25,7 @@
         <dependency>
             <groupId>com.vostroi</groupId>
             <artifactId>core</artifactId>
-            <version>${scloud.version}</version>
+<!--            <version>${scloud.version}</version>-->
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -51,6 +51,11 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+        </dependency>
+        <!--spring cloud 消息驱动-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
         </dependency>
 
 

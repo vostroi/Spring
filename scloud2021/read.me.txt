@@ -43,3 +43,8 @@ mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉
     SpringCloud Config学习
     config server模块
     整合 spring cloud bus 实现 配置文件动态刷新
+2020.07.07
+    SpringCloud Stream学习
+        customer 作为 生产者
+        order 作为 消费者
+
