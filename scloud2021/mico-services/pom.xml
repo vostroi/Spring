@@ -37,6 +37,11 @@
             </dependency>
             <dependency>
                 <groupId>com.vostroi</groupId>
+                <artifactId>api-order</artifactId>
+                <version>${scloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vostroi</groupId>
                 <artifactId>core</artifactId>
                 <version>${scloud.version}</version>
             </dependency>
@@ -67,7 +72,11 @@
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-zipkin</artifactId>
+                <version>${spring.cloud.starter.version}</version>
+            </dependency>
 
 
 

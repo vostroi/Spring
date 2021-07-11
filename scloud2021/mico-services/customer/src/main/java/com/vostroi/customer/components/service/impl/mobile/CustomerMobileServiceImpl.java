@@ -1,7 +1,7 @@
 package com.vostroi.customer.components.service.impl.mobile;
 
-import com.vostroi.api.customer.beans.Customer;
-import com.vostroi.api.customer.service.mobile.CustomerMobileService;
+import com.vostroi.api.components.beans.Customer;
+import com.vostroi.api.service.mobile.CustomerMobileService;
 import com.vostroi.components.dao.BaseDao;
 import com.vostroi.customer.components.dao.CustomerDao;
 import org.springframework.beans.factory.annotation.Autowired;

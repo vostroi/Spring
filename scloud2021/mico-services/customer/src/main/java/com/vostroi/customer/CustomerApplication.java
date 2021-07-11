@@ -1,14 +1,10 @@
 package com.vostroi.customer;
 
-import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -26,9 +22,9 @@ import org.springframework.context.annotation.ComponentScan;
 //        })
 //@EnableEurekaClient //使用zookeeper，注释eureka
 @EnableDiscoveryClient  // 使用zookeeper或者consul作为注册中心时，注册服务
-@EnableFeignClients(basePackages = {"com.vostroi.api"})             // 开启OpenFeign
+@EnableFeignClients(basePackages = {"com.vostroi.api.feign.product","com.vostroi.api.feign.order"})             // 开启OpenFeign
 @EnableCircuitBreaker
-@ComponentScan(basePackages = {"com.vostroi.customer","com.vostroi.api","com.vostroi.components"})
+@ComponentScan(basePackages = {"com.vostroi.api.components","com.vostroi.customer.components","com.vostroi.components"})
 public class CustomerApplication {
 
     public static void main(String[] args) {

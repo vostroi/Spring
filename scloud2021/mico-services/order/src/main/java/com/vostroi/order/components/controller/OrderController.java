@@ -29,8 +29,7 @@ public class OrderController {
 
     @GetMapping(value = "/conn")
     public ResultData<String> connect(){
-        log.info("custListener={}", custListener);
+        log.info("service.order sleuthTrace connect custListener={}", custListener);
         return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000 , serverPort);
     }
-
 }

@@ -1,7 +1,8 @@
 package com.vostroi.customer.components.controller.mobile;
 
 import cn.hutool.core.util.StrUtil;
-import com.vostroi.api.customer.service.mq.SimpleMessageProvider;
+import com.vostroi.api.feign.order.mobile.OrderMobileClient;
+import com.vostroi.api.service.mq.SimpleMessageProvider;
 import com.vostroi.util.EnumConstant;
 import com.vostroi.util.ResultData;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,6 +38,8 @@ public class SimpleTestController {
     @Autowired
     private SimpleMessageProvider msgProvider;
 
+    @Autowired  private OrderMobileClient orderMobileClient;
+
 
     @GetMapping(value = "/dynamic")
     public ResultData<String> dynamicProperty(){
@@ -56,4 +60,16 @@ public class SimpleTestController {
         return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, send+"----"+seria);
     }
 
+    @GetMapping(value = "/sleuth/{num}")
+    public ResultData sleuth(@PathVariable(value = "num") Integer num){
+        log.info("sleuth msg num={}",num);
+        orderMobileClient.connect();
+        return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, num);
+    }
+
+    @GetMapping(value = "/sleuth2/{num}")
+    public ResultData sleuth2(@PathVariable(value = "num") Integer num){
+        log.info("sleuth msg num={}",num);
+        return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, num);
+    }
 }

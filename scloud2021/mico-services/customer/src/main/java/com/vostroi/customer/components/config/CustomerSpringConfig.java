@@ -1,4 +1,4 @@
-package com.vostroi.customer.components.config;
+package com.vostroi.components.config;
 
 import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
 import com.netflix.loadbalancer.IRule;

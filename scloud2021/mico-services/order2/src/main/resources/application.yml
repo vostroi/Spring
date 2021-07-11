@@ -28,6 +28,12 @@ spring:
           binder: my_rabbit
           content-type: application/json
           group: service-order
+  zipkin:
+    base-url: http://127.0.0.1:9411/zipkin
+  sleuth:
+    sampler:
+      probability: 1
+      rate: 10
 
 ##
 management:
@@ -52,4 +58,5 @@ feign:
     enabled: true
 
 logging:
-  level: debug
+  level:
+    root: info

@@ -20,7 +20,7 @@ mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉
     继续使用zookeeper 学习
 2020.06.15
     ribbon学习
-        com.vostroi.customer.components.config.CustomerSpringConfig 能被 spring 扫描到， 会对所有 provider 起效
+        CustomerSpringConfig 能被 spring 扫描到， 会对所有 provider 起效
         com.vostroi.custom.ProductServiceRibbonRule 配置 @RibbonClients 可对不同的 provider 定制负载均衡
 2020.06.17
     feign学习
@@ -47,4 +47,5 @@ mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉
     SpringCloud Stream学习
         customer 作为 生产者
         order 作为 消费者
-
+    SpringCloud sleuth学习
+    上面两者 还需要找资料深入学习

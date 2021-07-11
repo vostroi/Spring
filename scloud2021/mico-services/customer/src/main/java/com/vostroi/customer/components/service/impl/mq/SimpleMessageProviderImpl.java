@@ -1,15 +1,12 @@
 package com.vostroi.customer.components.service.impl.mq;
 
-import com.vostroi.api.customer.service.mq.SimpleMessageProvider;
+import com.vostroi.api.service.mq.SimpleMessageProvider;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.MessageBuilder;
-
-import javax.annotation.Resource;
 
 /**
  * @author Administrator

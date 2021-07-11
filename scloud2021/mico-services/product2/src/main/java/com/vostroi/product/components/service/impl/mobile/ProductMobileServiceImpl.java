@@ -1,7 +1,7 @@
 package com.vostroi.product.components.service.impl.mobile;
 
-import com.vostroi.api.product.beans.Product;
-import com.vostroi.api.product.service.mobile.ProductMobileService;
+import com.vostroi.api.components.beans.Product;
+import com.vostroi.api.service.mobile.ProductMobileService;
 import com.vostroi.components.dao.BaseDao;
 import com.vostroi.product.components.dao.ProductDao;
 import lombok.extern.slf4j.Slf4j;

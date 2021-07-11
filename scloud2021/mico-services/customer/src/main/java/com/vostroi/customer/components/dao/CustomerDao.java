@@ -1,7 +1,6 @@
 package com.vostroi.customer.components.dao;
 
-import com.vostroi.api.customer.beans.Customer;
-import com.vostroi.api.product.beans.Product;
+import com.vostroi.api.components.beans.Customer;
 import com.vostroi.components.dao.BaseDao;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;

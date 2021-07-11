@@ -2,10 +2,10 @@ package com.vostroi.customer.components.controller.pad;
 
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.vostroi.api.customer.beans.Customer;
-import com.vostroi.api.customer.service.mobile.CustomerMobileService;
-import com.vostroi.api.product.beans.Product;
-import com.vostroi.api.product.feign.mobile.ProductMobileClient;
+import com.vostroi.api.components.beans.Customer;
+import com.vostroi.api.components.beans.Product;
+import com.vostroi.api.feign.product.mobile.ProductMobileClient;
+import com.vostroi.api.service.mobile.CustomerMobileService;
 import com.vostroi.components.controller.BaseController;
 import com.vostroi.components.service.BaseService;
 import com.vostroi.util.MicroServiceName;

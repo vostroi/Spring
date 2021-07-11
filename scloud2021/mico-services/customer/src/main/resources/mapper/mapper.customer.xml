@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.vostroi.customer.components.dao.CustomerDao">
-    <resultMap id="baseResultMap" type="com.vostroi.api.customer.beans.Customer" autoMapping="true">
+    <resultMap id="baseResultMap" type="com.vostroi.api.components.beans.Customer" autoMapping="true">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result property="version" column="version" jdbcType="INTEGER" />
         <result property="state" column="state" jdbcType="INTEGER" typeHandler="com.vostroi.util.mybatis.EnumRecordStateHandler"/>

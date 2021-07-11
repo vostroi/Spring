@@ -1,10 +1,9 @@
 package com.vostroi.product.components.controller.mobile;
 
 import cn.hutool.json.JSONUtil;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import com.vostroi.api.product.beans.Product;
-import com.vostroi.api.product.service.mobile.ProductMobileService;
+import com.vostroi.api.components.beans.Product;
+import com.vostroi.api.feign.order.mobile.OrderMobileClient;
+import com.vostroi.api.service.mobile.ProductMobileService;
 import com.vostroi.components.controller.BaseController;
 import com.vostroi.components.service.BaseService;
 import com.vostroi.util.EnumConstant;
@@ -30,9 +29,10 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @RestController
 @RequestMapping(value = "/prd/mbl")
-public class ProductMobileController extends BaseController<Product , Long> {
+public class ProductMobileController extends BaseController<Product, Long> {
     @Value("${server.port}") private int serverPort;
     @Autowired private ProductMobileService service;
+    @Autowired private OrderMobileClient orderMobileClient;
 
     @Override
     public BaseService getService() {
@@ -99,4 +99,12 @@ public class ProductMobileController extends BaseController<Product , Long> {
     // 服务熔断测试START
 
     // 服务熔断测试END
+
+    // 测试链路跟踪START
+    @GetMapping(value = "/sleuth")
+    public ResultData<String> sleuthTrace(){
+        log.info("service.product sleuthTrace...");
+        return orderMobileClient.connect();
+    }
+    // 测试链路跟踪END
 }

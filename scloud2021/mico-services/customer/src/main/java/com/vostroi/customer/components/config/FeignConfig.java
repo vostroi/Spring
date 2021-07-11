@@ -1,4 +1,4 @@
-package com.vostroi.customer.components.config;
+package com.vostroi.components.config;
 
 import feign.Logger;
 import org.springframework.context.annotation.Bean;

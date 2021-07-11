@@ -1,21 +1,16 @@
 package com.vostroi.customer.components.controller.mobile;
 
 import cn.hutool.core.util.IdUtil;
-import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import com.vostroi.api.customer.beans.Customer;
-import com.vostroi.api.customer.service.mobile.CustomerMobileService;
-import com.vostroi.api.product.beans.Product;
-import com.vostroi.api.product.feign.mobile.ProductMobileClient;
+import com.vostroi.api.components.beans.Customer;
+import com.vostroi.api.feign.product.mobile.ProductMobileClient;
+import com.vostroi.api.service.mobile.CustomerMobileService;
 import com.vostroi.components.controller.BaseController;
 import com.vostroi.components.service.BaseService;
 import com.vostroi.util.EnumConstant;
-import com.vostroi.util.MicroServiceName;
 import com.vostroi.util.ResultData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/cust/mbl/circuit")
 public class CustomerMobileCircuitBreakerController extends BaseController<Customer, Long> {
     @Autowired private CustomerMobileService service;
-    @Autowired  private ProductMobileClient productMobileClient;
+    @Autowired private ProductMobileClient productMobileClient;
     @Override
     public BaseService getService() {
         return service;

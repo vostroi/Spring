@@ -1,8 +1,8 @@
 package com.vostroi.product.components.controller.pad;
 
 import cn.hutool.json.JSONUtil;
-import com.vostroi.api.product.beans.Product;
-import com.vostroi.api.product.service.mobile.ProductMobileService;
+import com.vostroi.api.components.beans.Product;
+import com.vostroi.api.service.mobile.ProductMobileService;
 import com.vostroi.components.controller.BaseController;
 import com.vostroi.components.service.BaseService;
 import com.vostroi.util.EnumConstant;
@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @RestController
 @RequestMapping(value = "/prd/pad")
-public class ProductPadController extends BaseController<Product , Long> {
+public class ProductPadController extends BaseController<Product, Long> {
     @Value("${server.port}") private int serverPort;
     @Autowired private ProductMobileService service;
 

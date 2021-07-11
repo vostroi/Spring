@@ -2,18 +2,16 @@ package com.vostroi.customer.components.controller.mobile;
 
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import com.vostroi.api.customer.beans.Customer;
-import com.vostroi.api.customer.service.mobile.CustomerMobileService;
-import com.vostroi.api.product.beans.Product;
-import com.vostroi.api.product.feign.mobile.ProductMobileClient;
+import com.vostroi.api.components.beans.Customer;
+import com.vostroi.api.components.beans.Product;
+import com.vostroi.api.feign.product.mobile.ProductMobileClient;
+import com.vostroi.api.service.mobile.CustomerMobileService;
 import com.vostroi.components.controller.BaseController;
 import com.vostroi.components.service.BaseService;
 import com.vostroi.util.MicroServiceName;
 import com.vostroi.util.ResultData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.netflix.hystrix.HystrixProperties;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,8 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerMobileController extends BaseController<Customer, Long> {
     @Autowired private CustomerMobileService service;
     @Autowired  private ProductMobileClient productMobileClient;
-    @Override
-    public BaseService getService() {
+    @Override public BaseService getService() {
         return service;
     }
 
@@ -113,5 +110,11 @@ public class CustomerMobileController extends BaseController<Customer, Long> {
         return productMobileClient.getSkuDetailHystrixError(skuId);
     }
 
-
+    // 测试链路跟踪START
+    @GetMapping(value = "/sleuth/{num}")
+    public ResultData<String> sleuthTrace(@PathVariable(value = "num") Integer num){
+        log.info("service.customer sleuthTrace num={}", num);
+        return productMobileClient.sleuthTrace();
+    }
+    // 测试链路跟踪END
 }
