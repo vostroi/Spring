@@ -38,8 +38,10 @@
         <spring.boot.version>2.3.10.RELEASE</spring.boot.version>
         <spring.cloud.version>Hoxton.SR11</spring.cloud.version>
         <cloud.alibaba.verion>2.2.5.RELEASE</cloud.alibaba.verion>
+        <alibaba.nacos.version>2.2.6.RELEASE</alibaba.nacos.version>
         <spring.cloud.starter.version>2.2.8.RELEASE</spring.cloud.starter.version>
         <cloud.stream.rabbit>3.0.12.RELEASE</cloud.stream.rabbit>
+        <loadbalance.verion>3.0.3</loadbalance.verion>
     </properties>
 
 
@@ -142,7 +144,11 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${alibaba.nacos.version}</version>
+            </dependency>
 
 
         </dependencies>

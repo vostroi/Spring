@@ -14,6 +14,7 @@ public class MicroServiceName {
     public static final String MICRO_SERVER_PRODUCT_NAME="service-product";
     public static final String MICRO_SERVER_PRODUCT="http://service-product";
     public static final String MICRO_SERVER_CUSTOMER="http://service-customer";
+    public static final String MICRO_SERVER_ORDER="http://service-order";
 
 
 }

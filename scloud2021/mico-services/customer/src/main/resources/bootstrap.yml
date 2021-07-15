@@ -1,0 +1,23 @@
+server:
+  port: 10091
+spring:
+  application:
+    name: service-customer
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        #命名空间，其值为在nacos添加命名空间后的ID
+        #namespace: 9a019e33-2cd5-406b-b2e9-875928001dc4
+        #按实际需求进行配置
+        #group: SICHUAN
+        # 指定配置在nacos中的配置文件格式
+        file-extension: yaml
+
+
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+# 从nacos中读取配置文件的文件名（Data ID）格式为 ${spring.application.name}-${spring.profile.active}.${spring.cloud.nacos.config.file-extension}
+# 也就是  {服务名}-{开发环境}.{后缀名} 本配置为 service-customer-dev.yaml
+# 实际是 namespace + group + Data ID 来唯一确定在nacos中的配置文件

@@ -1,4 +1,4 @@
-package com.vostroi.api.feign.order.mobile;
+package com.vostroi.api.feign.order;
 
 import com.vostroi.util.ResultData;
 import org.springframework.cloud.openfeign.FeignClient;

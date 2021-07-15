@@ -1,7 +1,7 @@
 package com.vostroi.customer.components.controller.mobile;
 
 import cn.hutool.core.util.StrUtil;
-import com.vostroi.api.feign.order.mobile.OrderMobileClient;
+import com.vostroi.api.feign.order.OrderMobileClient;
 import com.vostroi.api.service.mq.SimpleMessageProvider;
 import com.vostroi.util.EnumConstant;
 import com.vostroi.util.ResultData;
@@ -72,4 +72,6 @@ public class SimpleTestController {
         log.info("sleuth msg num={}",num);
         return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, num);
     }
+
+
 }

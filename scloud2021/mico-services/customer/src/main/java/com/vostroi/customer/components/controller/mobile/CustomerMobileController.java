@@ -8,6 +8,7 @@ import com.vostroi.api.feign.product.mobile.ProductMobileClient;
 import com.vostroi.api.service.mobile.CustomerMobileService;
 import com.vostroi.components.controller.BaseController;
 import com.vostroi.components.service.BaseService;
+import com.vostroi.util.EnumConstant;
 import com.vostroi.util.MicroServiceName;
 import com.vostroi.util.ResultData;
 import lombok.extern.slf4j.Slf4j;
@@ -117,4 +118,13 @@ public class CustomerMobileController extends BaseController<Customer, Long> {
         return productMobileClient.sleuthTrace();
     }
     // 测试链路跟踪END
+
+
+
+    // nacos RestTemplate 调用
+    @GetMapping(value = "/tmp/{num}")
+    public ResultData restTemplate(@PathVariable(value = "num") Integer num){
+        log.info("restTemplate msg num={}",num);
+        return this.getRestTemplate().getForObject(MicroServiceName.MICRO_SERVER_ORDER + "/ord/conn" , ResultData.class);
+    }
 }

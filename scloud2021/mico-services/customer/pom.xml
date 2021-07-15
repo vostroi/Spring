@@ -29,7 +29,6 @@
         <dependency>
             <groupId>com.vostroi</groupId>
             <artifactId>core</artifactId>
-<!--            <version>${scloud.version}</version>-->
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -65,6 +64,8 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zipkin</artifactId>
         </dependency>
+
+
 
 
 

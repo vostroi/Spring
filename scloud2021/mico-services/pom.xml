@@ -82,7 +82,6 @@
 
 
 
-
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
@@ -113,22 +112,22 @@
         -->
 
         <!--学习使用zookeeper 暂时不使用eureka-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.zookeeper</groupId>
-                    <artifactId>3.5.3-beta</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.apache.zookeeper</groupId>-->
+<!--                    <artifactId>3.5.3-beta</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
         <!-- 引入与zookeeper服务版本匹配的jar， 排除不匹配的版本-上面 -->
-        <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>3.5.5</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.zookeeper</groupId>-->
+<!--            <artifactId>zookeeper</artifactId>-->
+<!--            <version>3.5.5</version>-->
+<!--        </dependency>-->
 
         <!-- consul 学习 暂时不使用zookeeper -->
 <!--        <dependency>-->
@@ -137,9 +136,17 @@
 <!--            <version>3.0.1</version>-->
 <!--        </dependency>-->
 
+        <!--学习nacos 暂不使用zookeeper-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
 
-
-        <!--        <dependency>-->
+<!--        <dependency>-->
 <!--            <groupId>org.springframework.cloud</groupId>-->
 <!--            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>-->
 <!--        </dependency>-->
@@ -147,7 +154,10 @@
 <!--            <groupId>org.springframework.cloud</groupId>-->
 <!--            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>-->
 <!--        </dependency>-->
-
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-starter-loadbalancer</artifactId>-->
+<!--            </dependency>-->
 
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->

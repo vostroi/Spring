@@ -2,7 +2,7 @@ package com.vostroi.product.components.controller.mobile;
 
 import cn.hutool.json.JSONUtil;
 import com.vostroi.api.components.beans.Product;
-import com.vostroi.api.feign.order.mobile.OrderMobileClient;
+import com.vostroi.api.feign.order.OrderMobileClient;
 import com.vostroi.api.service.mobile.ProductMobileService;
 import com.vostroi.components.controller.BaseController;
 import com.vostroi.components.service.BaseService;

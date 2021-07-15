@@ -49,3 +49,10 @@ mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉
         order 作为 消费者
     SpringCloud sleuth学习
     上面两者 还需要找资料深入学习
+2020.07.11
+    SpringCloud Alibaba学习
+2020.07.11
+    nacos学习
+    nacos + openfeign ， 最初一直调不能服务，原来是优化了项目包结构，导致没扫描到controller
+    nacos 作配置中心 + 动态刷新 学习
+    nacos 分类配置 namespace + group + dataId

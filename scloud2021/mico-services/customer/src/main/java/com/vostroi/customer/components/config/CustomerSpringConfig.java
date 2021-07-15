@@ -1,8 +1,6 @@
-package com.vostroi.components.config;
+package com.vostroi.customer.components.config;
 
 import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
-import com.netflix.loadbalancer.IRule;
-import com.netflix.loadbalancer.RandomRule;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,14 +16,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CustomerSpringConfig {
 
-    @Bean
-    public IRule ribbonRule(){
+//    @Bean
+//    public IRule ribbonRule(){
 //        return new RoundRobinRule();      // 默认 轮询
 //        return new RetryRule();           // 先按 RoundRobinRule 如果获取服务失败会在指定时间内重试
 //        return new BestAvailableRule();   // 会先过滤掉多次访问故障而处于断路器断开状态的服务，然后选择一个并发量较小的服务
 //        return new AvailabilityFilteringRule();       // 先过滤掉故障服务 选择并发早较小的服务
-        return new RandomRule();            // 随机
-    }
+//        return new RandomRule();            // 随机
+//    }
 
     /**
      * HystrixDashboard  提示 Unable to connect to Command Metric Stream
