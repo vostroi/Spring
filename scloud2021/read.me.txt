@@ -52,8 +52,17 @@ mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉
 2020.07.11
     SpringCloud Alibaba学习
 2020.07.11
-    nacos学习
+    alibaba nacos学习
     nacos + openfeign ， 最初一直调不能服务，原来是优化了项目包结构，导致没扫描到controller
     nacos 作配置中心 + 动态刷新 学习
     nacos 分类配置 namespace + group + dataId
     nacos 持久化(mysql)  nacos集群 nginx负载均衡
+2020.07.19
+    alibaba sentinel学习
+    hystrix的问题：
+        需要开发人员搭建监控平台 hystrix-dashboard
+        web界面不能更细粒度配置 流量控制，服务熔断，降级，速率控制
+    sentinel:
+        1. 安装（下载jar）
+        2. 编码 引入依赖
+
