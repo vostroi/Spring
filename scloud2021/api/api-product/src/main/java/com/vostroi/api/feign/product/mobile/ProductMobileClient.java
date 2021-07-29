@@ -1,5 +1,6 @@
 package com.vostroi.api.feign.product.mobile;
 
+import com.vostroi.api.components.fallback.ProductMobileClientFallback;
 import com.vostroi.api.components.fallback.ProductMobileClientFallbackFactory;
 import com.vostroi.util.ResultData;
 import org.springframework.cloud.openfeign.FeignClient;

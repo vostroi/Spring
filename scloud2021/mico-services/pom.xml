@@ -150,10 +150,10 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
-        <!--sentinel实时监控 微服务会主动连接sentinel控制台-->
+        <!--sentinel 持久化到 nacos-->
         <dependency>
             <groupId>com.alibaba.csp</groupId>
-            <artifactId>sentinel-transport-simple-http</artifactId>
+            <artifactId>sentinel-datasource-nacos</artifactId>
         </dependency>
 
 <!--        <dependency>-->

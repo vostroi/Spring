@@ -23,7 +23,7 @@ import org.springframework.context.annotation.ComponentScan;
 //@EnableEurekaClient //使用zookeeper，注释eureka
 @EnableDiscoveryClient  // 使用zookeeper,consul,nacos 作为注册中心时，注册服务
 @EnableFeignClients(basePackages = {"com.vostroi.api.feign.product","com.vostroi.api.feign.order"})             // 开启OpenFeign
-@EnableCircuitBreaker
+//@EnableCircuitBreaker
 @ComponentScan(basePackages = {"com.vostroi.api.components","com.vostroi.customer.components","com.vostroi.components"})
 public class CustomerApplication {
 

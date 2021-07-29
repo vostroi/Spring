@@ -1,3 +1,14 @@
 spring:
   profiles:
     active: dev
+  cloud:
+    sentinel:
+      datasource:
+        ds1:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            namespace: 525bb08a-cad8-45de-b309-888705a5f998
+            groupId: dev
+            dataId: customer
+            data-type: json
+            rule-type: flow

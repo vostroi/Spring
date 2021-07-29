@@ -65,4 +65,7 @@ mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉
     sentinel:
         1. 安装（下载jar）
         2. 编码 引入依赖
+        3. 控制台使用学习
+        4. sentinel + openfeign
+        5. sentinel 持久化 配合 nacos
 

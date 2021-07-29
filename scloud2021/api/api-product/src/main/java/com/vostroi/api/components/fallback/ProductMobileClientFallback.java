@@ -4,6 +4,7 @@ import com.vostroi.api.feign.product.mobile.ProductMobileClient;
 import com.vostroi.util.EnumConstant;
 import com.vostroi.util.ResultData;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 /**
  * @author Administrator
