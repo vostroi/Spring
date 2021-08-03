@@ -11,11 +11,9 @@ import com.vostroi.util.ResultData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -107,4 +105,17 @@ public class ProductMobileController extends BaseController<Product, Long> {
         return orderMobileClient.connect();
     }
     // 测试链路跟踪END
+
+    @PostMapping(value = "/stprc/{skuId}/{price}")
+    public ResultData<String> setPrice(@PathVariable("skuId") Long skuId , @PathVariable("price") BigDecimal price){
+        Product product = service.get(skuId);
+        if(product==null){
+            return ResultData.getResultData(EnumConstant.RESULT_CODE.ER_3333);
+        }
+
+        product.setPrice(price);
+        service.save(product);
+        return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000);
+    }
+
 }

@@ -127,4 +127,16 @@ public class CustomerMobileController extends BaseController<Customer, Long> {
         log.info("restTemplate msg num={}",num);
         return this.getRestTemplate().getForObject(MicroServiceName.MICRO_SERVER_ORDER + "/ord/conn" , ResultData.class);
     }
+
+    /**
+     * 测试Seata
+     * @param custId
+     * @return
+     */
+    @GetMapping(value = "/tststa/{custId}")
+    public ResultData<String> testSeatc(@PathVariable("custId") Long custId){
+        String result = service.testSeata(custId);
+        return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000, result);
+    }
+
 }

@@ -68,4 +68,11 @@ mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉
         3. 控制台使用学习
         4. sentinel + openfeign
         5. sentinel 持久化 配合 nacos
+2020.08.02
+    seata学习
+    准备环境 customer和product 注册到nacos，mybatis 不使用seatc情况下，feign调用 更新数据到mysql
+    问题：
+        customer 之前两个配置文件 bootstrap.yml和application.yml，这次启动发现application.yml中的配置没生效，将application.yml中的配置移到了bootstrap.yml中
+        项目启动 报找不到dao对应mapper映射文件中的方法，clean工程 重启解决
+        product中的mybatis映射文件，字段映射错误 导致更新数据出错
 

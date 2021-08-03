@@ -6,6 +6,8 @@ import com.vostroi.util.ResultData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+
 /**
  * @author Administrator
  * @date 2021/6/23 0:24
@@ -41,6 +43,11 @@ public class ProductMobileClientFallback implements ProductMobileClient {
 
     @Override
     public ResultData<String> sleuthTrace() {
+        return fallback();
+    }
+
+    @Override
+    public ResultData<String> setPrice(Long skuId, BigDecimal price) {
         return fallback();
     }
 

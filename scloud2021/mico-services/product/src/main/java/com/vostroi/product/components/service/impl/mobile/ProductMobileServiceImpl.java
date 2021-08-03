@@ -44,4 +44,8 @@ public class ProductMobileServiceImpl implements ProductMobileService {
         log.info("hystrixErrorMethod 线程池：{},id={}", Thread.currentThread().getName(),id);
         return getDao().select(id);
     }
+
+
+
+
 }

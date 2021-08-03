@@ -96,9 +96,9 @@
             `shelved_time` =#{shelvedTime},
             `shelve_status` =   #{shelveStatus},
             `q_rcode_url` = #{qrCodeUri},
-            `sku_desc` = #{skuId},
+            `sku_desc` = #{skuDesc},
             `sku_name` = #{skuName},
-            `sku_id` =  #{skuDesc},
+            `sku_id` =  #{skuId},
             `price` =   #{price}
         where `id` = #{id}
     </update>

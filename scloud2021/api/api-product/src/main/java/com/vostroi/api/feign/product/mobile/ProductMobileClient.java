@@ -1,12 +1,17 @@
 package com.vostroi.api.feign.product.mobile;
 
+import com.vostroi.api.components.beans.Product;
 import com.vostroi.api.components.fallback.ProductMobileClientFallback;
 import com.vostroi.api.components.fallback.ProductMobileClientFallbackFactory;
+import com.vostroi.util.EnumConstant;
 import com.vostroi.util.ResultData;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.math.BigDecimal;
 
 /**
  * @author Administrator
@@ -51,4 +56,7 @@ public interface ProductMobileClient /*extends BaseFeignClient*/ {
     @GetMapping(value = "/sleuth")
     ResultData<String> sleuthTrace();
 
+
+    @PostMapping(value = "/stprc/{skuId}/{price}")
+    public ResultData<String> setPrice(@PathVariable("skuId") Long skuId , @PathVariable("price") BigDecimal price);
 }

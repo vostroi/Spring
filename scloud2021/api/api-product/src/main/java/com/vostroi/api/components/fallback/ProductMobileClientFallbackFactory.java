@@ -7,6 +7,8 @@ import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+
 /**
  * @author Administrator
  * @date 2021/6/23 0:10
@@ -44,6 +46,11 @@ public class ProductMobileClientFallbackFactory implements FallbackFactory<Produ
 
             @Override
             public ResultData<String> sleuthTrace() {
+                return ProductMobileClientFallbackFactory.fallback();
+            }
+
+            @Override
+            public ResultData<String> setPrice(Long skuId, BigDecimal price) {
                 return ProductMobileClientFallbackFactory.fallback();
             }
         };

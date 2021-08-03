@@ -11,4 +11,10 @@ import com.vostroi.components.service.BaseService;
  * @description: TODO
  */
 public interface CustomerMobileService extends BaseService<Customer,Long> {
+
+    /**
+     * 测试 SEATA
+     * @return
+     */
+    public String testSeata(Long custId);
 }

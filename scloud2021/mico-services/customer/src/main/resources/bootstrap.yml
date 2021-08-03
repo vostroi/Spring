@@ -21,7 +21,19 @@ spring:
         dashboard: 127.0.0.1:8080
         # 默认是8719 , 若被占用，递增1 扫描。 作用是在微服务机器上启用一个http server 与 sentinel 控制台通信，交互
         port: 8719
+      datasource:
+        ds1:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            namespace: 525bb08a-cad8-45de-b309-888705a5f998
+            groupId: dev
+            dataId: customer
+            data-type: json
+            rule-type: flow
+  profiles:
+    active: dev
 
 # 从nacos中读取配置文件的文件名（Data ID）格式为 ${spring.application.name}-${spring.profile.active}.${spring.cloud.nacos.config.file-extension}
 # 也就是  {服务名}-{开发环境}.{后缀名} 本配置为 service-customer-dev.yaml
 # 实际是 namespace + group + Data ID 来唯一确定在nacos中的配置文件
+
