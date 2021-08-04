@@ -113,6 +113,8 @@ public class ProductMobileController extends BaseController<Product, Long> {
             return ResultData.getResultData(EnumConstant.RESULT_CODE.ER_3333);
         }
 
+//        int calc = 5 / 0;
+
         product.setPrice(price);
         service.save(product);
         return ResultData.getResultData(EnumConstant.RESULT_CODE.SU_0000);

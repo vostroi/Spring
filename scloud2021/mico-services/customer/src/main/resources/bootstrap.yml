@@ -32,8 +32,42 @@ spring:
             rule-type: flow
   profiles:
     active: dev
+  main:
+    allow-bean-definition-overriding: true
 
 # 从nacos中读取配置文件的文件名（Data ID）格式为 ${spring.application.name}-${spring.profile.active}.${spring.cloud.nacos.config.file-extension}
 # 也就是  {服务名}-{开发环境}.{后缀名} 本配置为 service-customer-dev.yaml
 # 实际是 namespace + group + Data ID 来唯一确定在nacos中的配置文件
+
+
+## seata configs
+seata:
+  enabled: true
+  enable-auto-data-source-proxy: true
+  use-jdk-proxy: true
+  tx-service-group: my_test_tx_group
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
+      namespace: 487b31fd-0e6c-491f-a875-15be2a5dc09e
+  ## 本服务的seata配置信息 从nacos中读取
+  config:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
+      group: SEATA_GROUP
+      namespace: 487b31fd-0e6c-491f-a875-15be2a5dc09e
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default
+    disable-global-transaction: false
+  client:
+    rm:
+      report-success-enable: false
 

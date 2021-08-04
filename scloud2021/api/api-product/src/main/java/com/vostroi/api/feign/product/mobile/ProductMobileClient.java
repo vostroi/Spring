@@ -22,7 +22,9 @@ import java.math.BigDecimal;
  * value 服务提供方 服务名
  * fallbackFactory 处理服务降级 （必须让 spring 扫描到 ， 让 @EnableFeignClients(basePackages = {"com.vostroi.api.feign"}) 扫描到不起作用）
  */
-@FeignClient(value = "service-product" , fallbackFactory = ProductMobileClientFallbackFactory.class )
+//@FeignClient(value = "service-product" , fallbackFactory = ProductMobileClientFallbackFactory.class )
+// 注释掉 fallbackFactory，测试 seata 分布式事务， 不然降级处理了，导致 seata失效， 之后再考虑 seata与降级之间如何兼容
+@FeignClient(value = "service-product"  )
 //@FeignClient(value = "service-product" , fallback = ProductMobileClientFallback.class)
 @RequestMapping(value = "/prd/mbl")
 public interface ProductMobileClient /*extends BaseFeignClient*/ {

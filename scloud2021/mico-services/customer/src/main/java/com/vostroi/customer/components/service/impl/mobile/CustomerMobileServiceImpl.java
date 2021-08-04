@@ -5,6 +5,7 @@ import com.vostroi.api.feign.product.mobile.ProductMobileClient;
 import com.vostroi.api.service.mobile.CustomerMobileService;
 import com.vostroi.components.dao.BaseDao;
 import com.vostroi.customer.components.dao.CustomerDao;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,12 @@ public class CustomerMobileServiceImpl implements CustomerMobileService {
         return dao;
     }
 
+    /**
+     * @GlobalTransactional seata注解
+     * @param custId
+     * @return
+     */
+    @GlobalTransactional(rollbackFor = Exception.class)
     @Override
     public String testSeata(Long custId) {
 

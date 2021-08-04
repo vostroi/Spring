@@ -75,4 +75,6 @@ mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉
         customer 之前两个配置文件 bootstrap.yml和application.yml，这次启动发现application.yml中的配置没生效，将application.yml中的配置移到了bootstrap.yml中
         项目启动 报找不到dao对应mapper映射文件中的方法，clean工程 重启解决
         product中的mybatis映射文件，字段映射错误 导致更新数据出错
+    seata默认的cglib代理数据源会报错，应该还需要一些配置，这里使用的是seata.use-jdk-proxy=true
+    openfeign的fallback会导致seata失效，后续查找解决方法
 
