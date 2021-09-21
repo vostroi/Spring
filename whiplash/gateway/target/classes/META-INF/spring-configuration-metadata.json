@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "security.ignore",
+      "type": "com.whiplash.gateway.components.config.IgnoreUriConfig",
+      "sourceType": "com.whiplash.gateway.components.config.IgnoreUriConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "security.ignore.uris",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.whiplash.gateway.components.config.IgnoreUriConfig"
+    }
+  ],
+  "hints": []
+}
