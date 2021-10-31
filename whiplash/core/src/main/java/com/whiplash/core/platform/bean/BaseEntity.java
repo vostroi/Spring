@@ -1,12 +1,14 @@
 package com.whiplash.core.platform.bean;
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.json.JSONUtil;
 import com.whiplash.core.commom.util.CommomConstant;
 import com.whiplash.core.commom.util.EnumConstant;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -25,6 +27,7 @@ import java.util.Date;
  */
 @MappedSuperclass
 @Data
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 public class BaseEntity {
@@ -83,4 +86,17 @@ public class BaseEntity {
      */
     @Column(name = "remark" , columnDefinition = "varchar(256)")
     private String remark= CommomConstant.STR_EMPTY;
+
+    /**
+     * 公共方法  将 BaseDto 转换为  BaseEntity； 所有匹配属性
+     * @param dto
+     * @return
+     */
+    public static BaseEntity fromBaseDtoFull(BaseDto dto) {
+        if(dto == null){
+            return null;
+        }
+
+        return JSONUtil.toBean(JSONUtil.toJsonStr(dto), BaseEntity.class);
+    }
 }

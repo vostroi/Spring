@@ -1,5 +1,6 @@
 package com.whiplash.oauth.components.jwt;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.whiplash.oauth.dto.SecurityUser;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
@@ -8,6 +9,7 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
 
 /**

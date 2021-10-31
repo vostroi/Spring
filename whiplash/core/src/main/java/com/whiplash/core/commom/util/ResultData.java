@@ -1,6 +1,8 @@
 package com.whiplash.core.commom.util;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,6 +15,8 @@ import java.util.List;
  * @description: 封装 API返回的数据
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ResultData<T> implements Serializable {
     /**
      * 返回代码
@@ -69,7 +73,6 @@ public class ResultData<T> implements Serializable {
     }
 
     public static<T> ResultData<T> getResultData(T t){
-        ResultData resultData = new ResultData();
         if(t!=null){
             return getResultDataSuccess(t);
         }else{
@@ -100,11 +103,39 @@ public class ResultData<T> implements Serializable {
      * @param <T>
      * @return
      */
-    public static <T> ResultData<T> getResultDataErrorParamEmpty() {
+    public static <T> ResultData<T> getResultDataParamEmpty() {
         ResultData resultData = new ResultData();
         resultData.setCode(EnumConstant.RESULT_CODE.ER_3333.getCode());
         resultData.setMsg(EnumConstant.RESULT_CODE.ER_3333.getMsg());
-        resultData.setMessage("请求参数为空");
+        resultData.setMessage(CommomConstant.REQUEST_PARAMS_EMPTY);
+        return resultData;
+    }
+
+    /**
+     * 通用返回
+     * 错误 请求参数错误
+     * @param <T>
+     * @return
+     */
+    public static <T> ResultData<T> getResultDataParamError() {
+        ResultData resultData = new ResultData();
+        resultData.setCode(EnumConstant.RESULT_CODE.ER_3333.getCode());
+        resultData.setMsg(EnumConstant.RESULT_CODE.ER_3333.getMsg());
+        resultData.setMessage(CommomConstant.REQUEST_PARAMS_ERROR);
+        return resultData;
+    }
+
+    /**
+     * 通用返回
+     * 错误 请求数据不存在
+     * @param <T>
+     * @return
+     */
+    public static <T> ResultData<T> getResultDataNotExist() {
+        ResultData resultData = new ResultData();
+        resultData.setCode(EnumConstant.RESULT_CODE.SU_0000.getCode());
+        resultData.setMsg(EnumConstant.RESULT_CODE.SU_0000.getMsg());
+        resultData.setMessage(CommomConstant.REQUEST_DATA_NOT_EXIST);
         return resultData;
     }
 
@@ -144,7 +175,7 @@ public class ResultData<T> implements Serializable {
         return resultData;
     }
 
-    public static ResultData<List> getResultData(List list) {
+    public static <T> ResultData<List<T>> getResultData(List<T> list) {
         ResultData resultData = new ResultData();
         if(list == null || list.isEmpty()){
             resultData.setCode(EnumConstant.RESULT_CODE.ER_3333.getCode());

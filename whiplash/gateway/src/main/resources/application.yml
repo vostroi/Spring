@@ -31,6 +31,20 @@ spring:
           filters:
             - StripPrefix=1
 
+        - id: product
+          uri: lb://product-server
+          predicates:
+            - Path=/product/**
+          filters:
+            - StripPrefix=1
+
+        - id: order
+          uri: lb://order-server
+          predicates:
+            - Path=/order/**
+          filters:
+            - StripPrefix=1
+
         - id: oauth
           uri: lb://oauth-server
           predicates:
@@ -46,17 +60,32 @@ spring:
           # 配置 rsa 公钥访问地址 (系统内部使用)
           jwk-set-uri: "http://127.0.0.1:11111/api/rsa/publickey"
 
-
+  # 可以在程序中声明redis数据库 达到使用多数据库的目的
   redis:
     database: 1
     port: 6379
     host: 127.0.0.1
 
 
+
 # 自定义 配置 uri 白名单
 security:
   ignore:
     uris:
-      - "/actuator/**"
-      - "/auth/oauth/token"
-      - "/auth/api/rsa/publickey"
+    - "/actuator/**"
+    - "/auth/oauth/token"
+    - "/auth/api/rsa/publickey"
+
+  # 开发环境  不作资源授权验证
+  authorization:
+    permit:
+      all: true
+
+
+logging:
+  config: classpath:logback.xml
+  level:
+    org:
+      whiplash: trace
+      springframework: trace
+

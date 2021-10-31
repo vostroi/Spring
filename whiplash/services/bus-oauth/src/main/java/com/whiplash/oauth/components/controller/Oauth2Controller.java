@@ -3,7 +3,6 @@ package com.whiplash.oauth.components.controller;
 import com.whiplash.core.commom.util.OauthConstant;
 import com.whiplash.core.commom.util.ResultData;
 import com.whiplash.dto.Oauth2TokenDto;
-import jdk.internal.util.xml.impl.ReaderUTF8;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.endpoint.TokenEndpoint;

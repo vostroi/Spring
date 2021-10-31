@@ -14,5 +14,23 @@
     <description>订单服务</description>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>org.whiplash</groupId>
+            <artifactId>api-member</artifactId>
+            <version>${scloud.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.whiplash</groupId>
+            <artifactId>api-order</artifactId>
+            <version>${scloud.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.whiplash</groupId>
+            <artifactId>api-product</artifactId>
+            <version>${scloud.version}</version>
+        </dependency>
+
+    </dependencies>
 
 </project>

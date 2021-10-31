@@ -2,6 +2,7 @@ package com.whiplash.service;
 
 import com.whiplash.components.member.bean.Customer;
 import com.whiplash.core.platform.service.BaseService;
+import com.whiplash.dto.CustomerDto;
 
 /**
  * @author Administrator
@@ -12,5 +13,6 @@ import com.whiplash.core.platform.service.BaseService;
  */
 public interface CustomerService extends BaseService<Customer, Long> {
 
+    public Customer saveFrom(CustomerDto customerDto);
 
 }

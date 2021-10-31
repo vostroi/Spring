@@ -4,20 +4,16 @@ import com.whiplash.core.commom.util.ParamDateEditor;
 import com.whiplash.core.commom.util.ResultData;
 import com.whiplash.core.platform.bean.BaseEntity;
 import com.whiplash.core.platform.service.BaseService;
-import jdk.nashorn.internal.ir.ReturnNode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.transform.Result;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 /**
  * @author Administrator
@@ -25,6 +21,7 @@ import java.util.Properties;
  * @projectName whiplash
  * @title: BaseController
  * @description: 抽象基础controller， 提取公共API接口
+ * 注意：所有get方法，都要转换成对应的 DTO 避免暴露过多字段
  */
 @Slf4j
 @RestController
@@ -45,6 +42,14 @@ public abstract class BaseController<T extends BaseEntity , ID extends Serializa
     @GetMapping(value = "/get/{id}")
     public ResultData<T> get(@PathVariable("id") ID id) {
         T t = getService().get(id);
+        return ResultData.getResultData(t);
+    }
+
+    @GetMapping(value = "/get/cache/{id}")
+    public ResultData<T> getByIdUseCache(@PathVariable("id") ID id) {
+        // 先从缓存中获取
+
+        T t = getService().getUseCache(id);
         return ResultData.getResultData(t);
     }
 
@@ -72,9 +77,9 @@ public abstract class BaseController<T extends BaseEntity , ID extends Serializa
      * @return
      */
     @RequestMapping(value = {"/btcrt","/btmdf"} , method = {RequestMethod.POST,RequestMethod.PUT})
-    public ResultData<List> createOrModifyBatch(@RequestBody List<T> tList) {
+    public ResultData<List<T>> createOrModifyBatch(@RequestBody List<T> tList) {
         if (tList == null || tList.isEmpty()) {
-            return ResultData.getResultDataErrorParamEmpty();
+            return ResultData.getResultDataParamEmpty();
         }
          return ResultData.getResultData(getService().saveBatch(tList) );
     }
@@ -102,7 +107,7 @@ public abstract class BaseController<T extends BaseEntity , ID extends Serializa
     @RequestMapping(value = "/multiset/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
     public ResultData<Object> setProperties(@PathVariable("id") ID id, @RequestBody Map<String, Object> properties) {
         if (properties == null || properties.isEmpty()) {
-            return ResultData.getResultDataErrorParamEmpty();
+            return ResultData.getResultDataParamEmpty();
         }
 
         T t = getService().setProperties(id, properties);
@@ -128,7 +133,7 @@ public abstract class BaseController<T extends BaseEntity , ID extends Serializa
     @RequestMapping(value = "/btdel" , method = {RequestMethod.DELETE})
     public ResultData deleteBatch(@RequestParam("idList") List<ID> idList) {
         if (idList == null || idList.isEmpty()) {
-            return ResultData.getResultDataErrorParamEmpty();
+            return ResultData.getResultDataParamEmpty();
         }
 
         getService().delete(idList);
@@ -147,4 +152,6 @@ public abstract class BaseController<T extends BaseEntity , ID extends Serializa
         // 字符串类型的日期 绑定到日期类型
         binder.registerCustomEditor(Date.class, new ParamDateEditor());
     }
+
+
 }

@@ -2,6 +2,7 @@ package com.whiplash.member.components.service;
 
 import com.whiplash.components.member.bean.Customer;
 import com.whiplash.core.platform.dao.BaseDao;
+import com.whiplash.dto.CustomerDto;
 import com.whiplash.member.components.dao.CustomerDao;
 import com.whiplash.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,11 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer getUseCache(Long aLong) {
+        return null;
+    }
+
+    @Override
+    public Customer saveFrom(CustomerDto customerDto) {
         return null;
     }
 }

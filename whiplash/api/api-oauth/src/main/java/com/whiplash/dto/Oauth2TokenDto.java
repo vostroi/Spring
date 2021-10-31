@@ -3,6 +3,7 @@ package com.whiplash.dto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.SuperBuilder;
 
 /**
  * @author Administrator
@@ -13,7 +14,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Builder
+@SuperBuilder
 public class Oauth2TokenDto {
 
     /**

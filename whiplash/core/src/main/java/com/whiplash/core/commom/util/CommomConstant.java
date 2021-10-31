@@ -15,7 +15,15 @@ public  interface CommomConstant {
      */
     final String STR_EMPTY="";
 
+    final String STR_METHOD_RETURN_NULL = "方法返回数据为空";
 
+    final String STR_API_ERROR = "接口内部错误";
+
+    final String REQUEST_PARAMS_EMPTY = "请求参数为空";
+
+    final String REQUEST_PARAMS_ERROR = "请求参数有错误";
+
+    final String REQUEST_DATA_NOT_EXIST = "请求数据不存在";
 
 
 

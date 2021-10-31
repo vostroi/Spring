@@ -7,10 +7,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Administrator
@@ -18,14 +21,21 @@ import java.util.Date;
  * @projectName whiplash
  * @title: Order
  * @description: 用户下单的总订单
+ * 订单关系：Order -> MerchantOrder -> StoreOrder -> OrderProduct
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 @Entity
 @Table(name = "t_order")
 public class Order extends BaseEntity {
+
+    /**
+     * 订单号
+     */
+    @Column(name = "order_code" , columnDefinition = "bigint")
+    private Long orderCode;
 
     /**
      * 订单总价 单位元
@@ -77,11 +87,22 @@ public class Order extends BaseEntity {
     @Column(name = "sku_count" , columnDefinition = "int")
     private int skuCount;
 
+    /**
+     * 映射到数据库 默认是按 枚举值序列 EnumType.ORDINAL，如果要使用自定义值 需要 @Convert 并 自定义实现  AttributeConverter
+     */
     @Column(name = "status" , columnDefinition = "int")
     private EnumConstantOrder.ORDER_STATUS status = EnumConstantOrder.ORDER_STATUS.NOT_PAYED;
 
     @Column(name = "pay_way" , columnDefinition = "int")
     private EnumConstantPayment.PAY_WAY payWay ;
 
+    @Transient
+    private List<MerchantOrder> moList;
 
+    public List<MerchantOrder> getMoList() {
+        if (this.moList == null) {
+            this.moList = new ArrayList<>();
+        }
+        return this.moList;
+    }
 }

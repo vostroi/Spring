@@ -1,0 +1,45 @@
+server:
+  port: 10020
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: order-server
+
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/whiplash-order?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    hikari:
+      auto-commit: false
+      maximum-pool-size: 10
+      minimum-idle: 2
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database: mysql
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+
+
+
+# 暴雷 actuator 端点， 注意在 yml中 所有端点 用"*"， 在 properties中 所有端点用*
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

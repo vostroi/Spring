@@ -19,46 +19,42 @@ public class EnumConstantOrder {
         /**
          * 已关闭
          */
-        CLOSED("已关闭", -20),
+        CLOSED("已关闭", 0),
 
         /**
          * 已取消
          */
-        CANCEL("已取消", -10),
+        CANCEL("已取消", 1),
 
         /**
          * 待付款
          */
-        NOT_PAYED("待付款", 0),
+        NOT_PAYED("待付款", 2),
 
         /**
          * 已付款
          */
-        PAYED("已付款", 10),
+        PAYED("已付款", 3),
 
         /**
          * 未发货
          */
-        NOT_DELIVER("未发货", 20),
+        NOT_DELIVER("未发货", 4),
 
         /**
          * 已发货
          */
-        DELIVERED("已发货", 30),
-
-        // 30-60 预留
+        DELIVERED("已发货", 5),
 
         /**
          * 确认收货
          */
-        CONFIRMED("确认收货",60),
-
-        // 70 以后 预留给售后状态
+        CONFIRMED("确认收货",6),
 
         /**
          * 已退款
          */
-        REFUNDED("已退款", 70)
+        REFUNDED("已退款", 7)
         ;
 
         @Getter

@@ -24,6 +24,10 @@ spring:
     hibernate:
       ddl-auto: update
 
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
 
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss

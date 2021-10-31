@@ -24,17 +24,17 @@ public class EnumConstantPayment {
         /**
          * 支付宝
          */
-        ZHIFUBAO("支付宝", 10),
+        ZHIFUBAO("支付宝", 1),
 
         /**
          * 京东支付
          */
-        JD("京东", 20),
+        JD("京东", 2),
 
         /**
          * 银联
          */
-        UNION("银联", 30)
+        UNION("银联", 3)
         ;
 
         @Getter

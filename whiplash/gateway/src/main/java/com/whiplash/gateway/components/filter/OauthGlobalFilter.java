@@ -37,8 +37,11 @@ public class OauthGlobalFilter implements GlobalFilter , Ordered {
             String pureToken = token.replace(OauthConstant.BEARER, "");
             JWSObject jwsObject = JWSObject.parse(pureToken);
             String userInfoStr = jwsObject.getPayload().toString();
+
             log.debug("OauthGlobalFilter.filter() userInfoStr:{}", userInfoStr);
-            ServerHttpRequest request = exchange.getRequest().mutate().header("user", userInfoStr).build();
+
+            ServerHttpRequest request = exchange.getRequest().mutate().header(OauthConstant.USER, userInfoStr).build();
+
             exchange = exchange.mutate().request(request).build();
 
         } catch (ParseException e) {

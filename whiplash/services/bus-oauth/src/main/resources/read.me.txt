@@ -1,3 +1,5 @@
-whiplash.p12
-alias:whiplash
-密码:whiplash
+1. RSA证书
+    whiplash.p12
+    alias:whiplash
+    密码:whiplash
+2. JWT如何回收（因为是无状态的，如何在服务端回收JWT，可能要借助于redis）

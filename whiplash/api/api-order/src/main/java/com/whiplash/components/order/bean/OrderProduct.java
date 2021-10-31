@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -20,11 +21,10 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 @Entity
 @Table(name = "t_order_product")
 public class OrderProduct extends BaseEntity {
-
 
     @Column(name = "order_id" , columnDefinition = "bigint")
     private Long orderId;
@@ -85,11 +85,17 @@ public class OrderProduct extends BaseEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date payTime;
 
-    @Column(name = "sku_id" , columnDefinition = "bigint")
-    private Long skuId;
+    @Column(name = "product_id" , columnDefinition = "bigint")
+    private Long productId;
+
+    @Column(name = "prod_spec_id" , columnDefinition = "bigint")
+    private Long productSpecsId;
 
     @Column(name = "sku_name" , columnDefinition = "bigint")
     private String skuName;
+
+    @Column(name = "prod_spec_name" , columnDefinition = "bigint")
+    private String productSpecsName;
 
     /**
      * 商品数量

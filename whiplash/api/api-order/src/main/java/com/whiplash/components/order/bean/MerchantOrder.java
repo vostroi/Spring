@@ -5,10 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Administrator
@@ -20,11 +23,10 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 @Entity
 @Table(name = "t_merchant_order")
 public class MerchantOrder extends BaseEntity {
-
 
     @Column(name = "order_id" , columnDefinition = "bigint")
     private Long orderId;
@@ -82,5 +84,14 @@ public class MerchantOrder extends BaseEntity {
     @Column(name = "sku_count" , columnDefinition = "int")
     private int skuCount;
 
+    @Transient
+    private List<StoreOrder> soList;
+
+    public List<StoreOrder> getSoList() {
+        if (this.soList == null) {
+            this.soList = new ArrayList<>();
+        }
+        return this.soList;
+    }
 
 }

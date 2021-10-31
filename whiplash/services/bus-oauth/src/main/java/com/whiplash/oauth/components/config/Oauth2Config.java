@@ -85,7 +85,8 @@ public class Oauth2Config extends AuthorizationServerConfigurerAdapter {
                 .scopes("all")
                 // 授权类型（oauth2的4种授权类型）
                 .authorizedGrantTypes("password", "refresh_token")
-                .accessTokenValiditySeconds(10)
+                // token 过期时间
+                .accessTokenValiditySeconds(60*60*2)
                 .refreshTokenValiditySeconds(7200)
                 // 自动授权 无需客户端确认
                 // .autoApprove(true)

@@ -4,6 +4,7 @@ import cn.hutool.core.convert.Convert;
 import com.whiplash.core.commom.util.OauthConstant;
 import com.whiplash.core.commom.util.RedisConstant;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authorization.AuthorizationDecision;
 import org.springframework.security.authorization.ReactiveAuthorizationManager;
@@ -29,6 +30,8 @@ import java.util.stream.Collectors;
 public class MyAuthorizationManager implements ReactiveAuthorizationManager<AuthorizationContext> {
 
     @Autowired RedisTemplate<String , Object> redisTemplate;
+    @Value(value="${security.authorization.permit.all:false}")
+    private boolean permitAll;
 
 
     @Override
@@ -52,7 +55,12 @@ public class MyAuthorizationManager implements ReactiveAuthorizationManager<Auth
                 .map(AuthorizationDecision::new)
                 .defaultIfEmpty(new AuthorizationDecision(false));
 
-        return authorizationDecisionMono;
+        // 开发环境，不作资源授权验证
+        if(permitAll){
+            return Mono.just(new AuthorizationDecision(true));
+        } else {
+            return authorizationDecisionMono;
+        }
     }
 
 
