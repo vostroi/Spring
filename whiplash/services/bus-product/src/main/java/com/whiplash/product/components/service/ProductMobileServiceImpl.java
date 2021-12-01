@@ -6,6 +6,8 @@ import com.whiplash.product.components.dao.ProductMobileDao;
 import com.whiplash.service.ProductMobileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -18,8 +20,9 @@ import org.springframework.transaction.annotation.Transactional;
  * @title: CustomerServiceImpl
  * @description: TODO
  */
-@Service
 @Slf4j
+@CacheConfig(cacheNames = "spring:cache:product")
+@Service
 public class ProductMobileServiceImpl implements ProductMobileService {
     @Autowired private ProductMobileDao prodDao;
 
@@ -28,6 +31,7 @@ public class ProductMobileServiceImpl implements ProductMobileService {
         return prodDao;
     }
 
+    @Cacheable()
     @Override
     public Product getUseCache(Long id) {
         // 先从缓存中获取

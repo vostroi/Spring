@@ -1,3 +1,0 @@
-whiplash.p12
-alias:whiplash
-密码:whiplash

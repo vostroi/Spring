@@ -42,7 +42,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
-            <version>${spring.boot.version}</version>
+            <version>${spring.data.redis.version}</version>
         </dependency>
     </dependencies>
 

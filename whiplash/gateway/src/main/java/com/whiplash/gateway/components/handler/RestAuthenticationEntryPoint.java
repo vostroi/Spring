@@ -2,6 +2,7 @@ package com.whiplash.gateway.components.handler;
 
 import cn.hutool.json.JSONUtil;
 import com.whiplash.core.commom.util.ResultData;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,7 @@ import java.nio.charset.Charset;
  * @description: 自定义返回结果： 没有登录 或者 token 过期
  */
 @Component
+@Slf4j
 public class RestAuthenticationEntryPoint implements ServerAuthenticationEntryPoint {
     @Override
     public Mono<Void> commence(ServerWebExchange serverWebExchange, AuthenticationException auth) {

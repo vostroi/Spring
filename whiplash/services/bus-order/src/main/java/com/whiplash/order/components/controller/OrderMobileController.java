@@ -51,6 +51,8 @@ public class OrderMobileController extends BaseController<Order, Long> {
         // 以此来检查 参数的custId 和 token 中的 custId 是否匹配
         UserDto ud = luHolder.getCurrentUser();
 
+        // luHolder.illegalRequest(sosd.getCustId()+"");
+
         ResultData<OrderDto> rd = ordMblService.singleSubmitOrder(sosd);
 
         return rd;

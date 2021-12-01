@@ -216,4 +216,13 @@ public class ResultData<T> implements Serializable {
         return resultData;
     }
 
+    public static <T> ResultData<T> exception(T t, String message) {
+        ResultData resultData = new ResultData();
+        resultData.setCode(EnumConstant.RESULT_CODE.ER_3333_1111.getCode());
+        resultData.setMsg(EnumConstant.RESULT_CODE.ER_3333_1111.getMsg());
+        resultData.setMessage(message);
+        resultData.setData(t);
+        return resultData;
+    }
+
 }

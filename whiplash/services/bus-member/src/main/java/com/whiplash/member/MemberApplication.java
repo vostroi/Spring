@@ -16,7 +16,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EntityScan(basePackages = {"com.whiplash.components.member.bean"})
-@ComponentScan(basePackages = {"com.whiplash.components.tool","cn.hutool.extra.spring","com.whiplash.member.components"})
+@ComponentScan(basePackages = {"com.whiplash.components.tool","cn.hutool.extra.spring","com.whiplash.member.components","com.whiplash.core.handler"})
 public class MemberApplication {
     public static void main(String[] args) {
         SpringApplication.run(MemberApplication.class, args);

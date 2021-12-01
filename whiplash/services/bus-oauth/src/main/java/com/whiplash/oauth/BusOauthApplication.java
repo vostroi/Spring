@@ -13,7 +13,7 @@ import org.springframework.context.annotation.ComponentScans;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EntityScan(basePackages = {"com.whiplash.components.oauth.bean"})
-@ComponentScan(basePackages = {"com.whiplash.oauth.components","com.whiplash.components.tool"})
+@ComponentScan(basePackages = {"com.whiplash.oauth.components","com.whiplash.components.tool","com.whiplash.core.handler"})
 public class BusOauthApplication {
 
     public static void main(String[] args) {

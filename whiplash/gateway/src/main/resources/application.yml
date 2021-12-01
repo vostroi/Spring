@@ -60,7 +60,7 @@ spring:
           # 配置 rsa 公钥访问地址 (系统内部使用)
           jwk-set-uri: "http://127.0.0.1:11111/api/rsa/publickey"
 
-  # 可以在程序中声明redis数据库 达到使用多数据库的目的
+  # 可以在程序中声明式创建redis数据库 达到使用多数据库的目的
   redis:
     database: 1
     port: 6379

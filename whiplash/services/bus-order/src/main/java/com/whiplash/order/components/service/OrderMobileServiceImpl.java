@@ -5,12 +5,14 @@ import com.whiplash.components.order.bean.Order;
 import com.whiplash.components.order.dto.OrderDto;
 import com.whiplash.components.order.dto.SingleOrderSubmitDto;
 import com.whiplash.components.product.feign.ProductSpecsMobileClient;
+import com.whiplash.core.commom.exception.ApiException;
 import com.whiplash.core.commom.exception.ProductSpecException;
 import com.whiplash.core.commom.util.*;
 import com.whiplash.core.platform.bean.BaseDto;
 import com.whiplash.core.platform.dao.BaseDao;
 import com.whiplash.order.components.dao.OrderMobileDao;
 import com.whiplash.order.components.service.util.OrderServiceUtil;
+import com.whiplash.service.MerchantOrderService;
 import com.whiplash.service.OrderMobileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +32,7 @@ import java.util.List;
 public class OrderMobileServiceImpl implements OrderMobileService {
     @Autowired private OrderMobileDao ordMblDao;
     @Autowired private ProductSpecsMobileClient psmClient;
-    // @Autowired private MerchantOrderService moService；
+    @Autowired private MerchantOrderService moService;
 
     @Override
     public BaseDao getDao() {
@@ -44,6 +46,8 @@ public class OrderMobileServiceImpl implements OrderMobileService {
     }
 
     /**
+     * 各流程节点目前是串行的， 考虑优化：按操作分类，并发执行，最后汇总验证各节点执行结果
+     * save 订单也需要优化
      * 直接下单业务处理
      * 1. 生成订单
      * 2. 检查并锁定库存
@@ -58,7 +62,7 @@ public class OrderMobileServiceImpl implements OrderMobileService {
             return ResultData.getResultDataParamEmpty();
         }
 
-        // 生成临时订单数据
+        // 生成内存订单数据
         CommonResult<Order> orderResult = OrderServiceUtil.crtOrder(sosd);
         if (orderResult.getHasError()) {
             return ResultData.getResultData(EnumConstant.RESULT_CODE.ER_3333, orderResult.getErrorMsg());
@@ -75,23 +79,26 @@ public class OrderMobileServiceImpl implements OrderMobileService {
         List<MerchantOrder> moList = orderResult.getT().getMoList();
         for (MerchantOrder mo : moList) {
             mo.setOrderId(order.getId());
-            // save mo
+            MerchantOrder modb = moService.save(mo);
+            if (modb == null) {
+                throw new ApiException(CommomConstant.DATA_SAVE_ERROR);
+            }
 
             // 保存门店订单
             mo.getSoList().forEach(so->{
-                // so.setMerchantId();
+                so.setMerchantId(modb.getMerchantId());
+                so.setMerchantOrderId(modb.getId());
 
                 // save so
 
                 so.getOpList().forEach(op->{
                     // op.setStoreId();
+                    //op.setStoreOrderId(so.getId());
                     // save op
                 });
             });
 
         }
-
-
 
         // 检查并锁定库存
         ResultData<Boolean> stockRd = psmClient.orderedStock(sosd);

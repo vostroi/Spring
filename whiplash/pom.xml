@@ -41,6 +41,7 @@
         <mybatis.spring.boot.version>2.1.4</mybatis.spring.boot.version>
 
         <spring.boot.version>2.3.10.RELEASE</spring.boot.version>
+        <spring.data.redis.version>2.6.0</spring.data.redis.version>
         <spring.cloud.version>Hoxton.SR11</spring.cloud.version>
         <cloud.alibaba.verion>2.2.5.RELEASE</cloud.alibaba.verion>
         <alibaba.nacos.version>2.2.6.RELEASE</alibaba.nacos.version>
@@ -131,7 +132,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-redis</artifactId>
-                <version>${spring.boot.version}</version>
+                <version>${spring.data.redis.version}</version>
             </dependency>
 
             <!--以下是工具相关-->

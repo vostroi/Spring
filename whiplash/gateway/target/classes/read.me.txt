@@ -1,2 +1,0 @@
-1. 作为资源服务的统一入口，对访问服务的请求进行统一的认证 和 鉴权
-2. gateway使用了webflux 和 spring-boot-starter-web 冲突， 会报 org.springframework.security.oauth2.jwt.ReactiveJwtDecoder 错误

@@ -25,7 +25,9 @@ public  interface CommomConstant {
 
     final String REQUEST_DATA_NOT_EXIST = "请求数据不存在";
 
+    final String DATA_SAVE_ERROR = "数据保存出错";
 
+    final String DATA_QUERY_ERROR = "数据保存出错";
 
 
 

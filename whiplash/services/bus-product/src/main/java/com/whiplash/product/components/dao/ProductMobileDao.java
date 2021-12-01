@@ -2,6 +2,8 @@ package com.whiplash.product.components.dao;
 
 import com.whiplash.components.product.bean.Product;
 import com.whiplash.core.platform.dao.BaseDao;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
