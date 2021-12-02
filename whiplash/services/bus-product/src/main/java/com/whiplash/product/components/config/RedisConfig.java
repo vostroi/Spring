@@ -1,5 +1,6 @@
 package com.whiplash.product.components.config;
 
+import com.alibaba.fastjson.support.spring.GenericFastJsonRedisSerializer;
 import com.whiplash.product.components.handler.IgnoreExceptionCacheErrorHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +13,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.lang.reflect.Method;
+import java.nio.charset.Charset;
 import java.time.Duration;
 
 /**
@@ -92,13 +98,33 @@ public class RedisConfig extends CachingConfigurerSupport {
     }
 
     /**
-     * 实现 动态 选择 cacheManager
+     * 作为 spring cache 实现   动态 选择 cacheManager
      * @return
      */
     @Override
     public CacheResolver cacheResolver() {
         // https://blog.csdn.net/sz85850597/article/details/89301331
         return super.cacheResolver();
+    }
+
+    /**
+     * 手动声明 redisTemplate
+     * 1. 默认的 redisTemplate 的 Serializer 是 jdk ， 存入redis时 key会有乱码
+     * 2. 在对 一些字段进行 increment 类似操作时，会报错
+     * @return
+     */
+    @Bean
+    public RedisTemplate<String , String > redisTemplate() {
+        RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(lettuceConnectionFactory);
+
+        redisTemplate.setKeySerializer(new StringRedisSerializer(Charset.forName("UTF-8")));
+        redisTemplate.setValueSerializer(new GenericFastJsonRedisSerializer());
+
+        redisTemplate.setHashKeySerializer(redisTemplate.getKeySerializer());
+        redisTemplate.setHashValueSerializer(redisTemplate.getValueSerializer());
+
+        return redisTemplate;
     }
 }
 
