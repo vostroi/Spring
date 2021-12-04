@@ -1,5 +1,6 @@
 package com.whiplash.product;
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScans;
 
 @EnableCaching
+@EnableEncryptableProperties
 @SpringBootApplication
 @EnableFeignClients(basePackages = {"com.whiplash.components.member.feign","com.whiplash.components.order.feign"})
 @EnableDiscoveryClient

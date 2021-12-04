@@ -8,10 +8,10 @@ spring:
     name: order-server
 
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/whiplash-order?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=true
+    url: jdbc:mysql://120.25.216.73:3306/whiplash-order?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=true
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: root
+    username: ENC(UUcDXrhTzvXcjc7ypW/mqQ==)
+    password: ENC(guYfbOLDOjbIP974BnUaSnsEmlzkWc1o)
     hikari:
       auto-commit: false
       maximum-pool-size: 10
@@ -28,7 +28,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: 120.25.216.73:8848
 
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
@@ -43,3 +43,25 @@ management:
     web:
       exposure:
         include: "*"
+
+# 测试环境 盐 password 采用配置文件方式，生产使用启动参数方式传入
+# 1. 生产： java  -Djasypt.encryptor.password=whiplash -jar xxxxx.jar
+# 2. 生产： 在服务器的环境变量里配置,进一步提高安全性
+#打开/etc/profile文件
+#vim /etc/profile
+#
+## 文件末尾插入
+#export JASYPT_PASSWORD=whiplash
+#
+#source /etc/profile
+#
+#运行
+#java -jar -Djasypt.encryptor.password=${JASYPT_PASSWORD} xxx.jar
+#java  -Djasypt.encryptor.password=${JASYPT_PASSWORD} -jar xxxx.jar
+jasypt:
+  encryptor:
+    # 盐
+    password: whiplash
+    # 算法
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator

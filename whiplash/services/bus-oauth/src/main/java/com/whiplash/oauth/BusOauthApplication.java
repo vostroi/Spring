@@ -1,5 +1,6 @@
 package com.whiplash.oauth;
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.ComponentScans;
 /**
  * @author Administrator
  */
+@EnableEncryptableProperties
 @SpringBootApplication
 @EnableDiscoveryClient
 @EntityScan(basePackages = {"com.whiplash.components.oauth.bean"})

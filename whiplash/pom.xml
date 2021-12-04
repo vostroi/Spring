@@ -48,6 +48,7 @@
         <spring.cloud.starter.version>2.2.8.RELEASE</spring.cloud.starter.version>
         <cloud.stream.rabbit>3.0.12.RELEASE</cloud.stream.rabbit>
         <loadbalance.verion>3.0.3</loadbalance.verion>
+        <jasypt.version>3.0.4</jasypt.version>
     </properties>
 
     <!-- 子模块引用，不引用不导致依赖 -->
@@ -166,7 +167,12 @@
                 <artifactId>nimbus-jose-jwt</artifactId>
                 <version>${nimbus-jose-jwt.version}</version>
             </dependency>
-
+            <!--数据库密码加密-->
+            <dependency>
+                <groupId>com.github.ulisesbocchio</groupId>
+                <artifactId>jasypt-spring-boot-starter</artifactId>
+                <version>${jasypt.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>

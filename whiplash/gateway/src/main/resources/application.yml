@@ -12,7 +12,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: 120.25.216.73:8848
 
 
 
@@ -62,9 +62,10 @@ spring:
 
   # 可以在程序中声明式创建redis数据库 达到使用多数据库的目的
   redis:
-    database: 1
+    database: 0
     port: 6379
-    host: 127.0.0.1
+    host: 120.25.216.73
+    password: redis
 
 
 
