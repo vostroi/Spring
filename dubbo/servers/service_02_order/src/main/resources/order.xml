@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd        http://dubbo.apache.org/schema/dubbo        http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="order-services"/>
+
+    <!-- zookeeper 注册中心地址 -->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+
+    <dubbo:metadata-report address="zookeeper://127.0.0.1:2181"/>
+
+    <!-- 服务提供者 配置协议 服务提供者与消费者之间通信协议和端口 -->
+    <dubbo:protocol name="dubbo" port="20890"/>
+    <!-- 暴露服务 -->
+    <dubbo:service interface="com.vostroi.service.OrderService" ref="orderService" version="1.0.0"/>
+    <!-- 暴露服务 -->
+    <dubbo:service interface="com.vostroi.service.OrderService" ref="orderService2" version="2.0.0"/>
+
+    <!-- 配置为 registry 让dubbo去注册中心获取 监控中心的地址 -->
+    <dubbo:monitor protocol="registry"></dubbo:monitor>
+
+    <dubbo:config-center address="zookeeper://127.0.0.1:2181"></dubbo:config-center>
+
+    <beans>
+        <bean id="orderService" class="com.vostroi.service.OrderServiceImpl"/>
+        <bean id="orderService2" class="com.vostroi.service.OrderServiceImpl2"/>
+    </beans>
+
+
+</beans>

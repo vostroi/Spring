@@ -1,0 +1,4 @@
+1. 使用JDK自带的keytool.exe生成jks证书文件（keytool -genkey -alias jwt -keyalg RSA -keystore jwt.jks） 输入密码
+    jwt:别名
+    jwt.jks:生成的文件名
+2. 非对称加密指的是使用公钥和私钥来进行加密解密操作。对于加密操作，公钥负责加密，私钥负责解密；对于签名操作，私钥负责签名，公钥负责验证。非对称加密在JWT中的使用显然属于签名操作。

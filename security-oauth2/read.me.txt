@@ -12,3 +12,7 @@ SpringSecurity Oauth2学习
 	8.1:header要提交参数Authorization=Basic Vk9TVFJPSTpWT1NUUk9JX1NFQ1JFVA==（value是根据clientid和secret加密来的）
 	8.2:form提交参数response_type=code,code=,redirect_uri=,scop=
 9.redis存储token
+	9.1引入redis依赖包
+	9.2配置redis连接信息
+	9.3配置redisconfig
+	9.4授权服务器 重写 configure(AuthorizationServerEndpointsConfigurer endpoints) ， 配置tokenStore为RedisTokenStore
