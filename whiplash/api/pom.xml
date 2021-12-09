@@ -18,6 +18,7 @@
         <module>api-product</module>
         <module>api-weixin</module>
         <module>api-member</module>
+        <module>api-elastic</module>
     </modules>
 
     <artifactId>api</artifactId>

@@ -3,7 +3,7 @@ package com.whiplash.product.components.controller;
 import com.whiplash.components.product.bean.Product;
 import com.whiplash.core.platform.controller.BaseController;
 import com.whiplash.core.platform.service.BaseService;
-import com.whiplash.service.ProductMobileService;
+import com.whiplash.product.service.ProductMobileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -4,7 +4,7 @@ import cn.hutool.core.collection.CollUtil;
 import com.whiplash.components.oauth.bean.WhiplashUsers;
 import com.whiplash.core.platform.dao.BaseDao;
 import com.whiplash.oauth.components.dao.WhiplashUsersDao;
-import com.whiplash.service.WhiplashUsersService;
+import com.whiplash.oauth.service.WhiplashUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

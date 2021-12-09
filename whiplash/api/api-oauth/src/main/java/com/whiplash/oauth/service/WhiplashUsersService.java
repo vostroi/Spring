@@ -1,4 +1,4 @@
-package com.whiplash.service;
+package com.whiplash.oauth.service;
 
 import com.whiplash.components.oauth.bean.WhiplashUsers;
 import com.whiplash.core.platform.service.BaseService;

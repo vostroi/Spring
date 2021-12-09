@@ -1,4 +1,4 @@
-package com.whiplash.service;
+package com.whiplash.member.service;
 
 import com.whiplash.components.member.bean.Customer;
 import com.whiplash.core.platform.service.BaseService;

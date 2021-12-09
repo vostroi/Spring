@@ -1,10 +1,8 @@
-package com.whiplash.service;
+package com.whiplash.product.service;
 
 import com.whiplash.components.product.bean.Product;
 import com.whiplash.core.platform.service.BaseService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Administrator

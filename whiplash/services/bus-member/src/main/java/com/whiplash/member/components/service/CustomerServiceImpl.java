@@ -4,7 +4,7 @@ import com.whiplash.components.member.bean.Customer;
 import com.whiplash.core.platform.dao.BaseDao;
 import com.whiplash.dto.CustomerDto;
 import com.whiplash.member.components.dao.CustomerDao;
-import com.whiplash.service.CustomerService;
+import com.whiplash.member.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

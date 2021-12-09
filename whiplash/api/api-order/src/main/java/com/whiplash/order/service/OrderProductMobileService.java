@@ -1,4 +1,4 @@
-package com.whiplash.service;
+package com.whiplash.order.service;
 
 import com.whiplash.components.order.bean.OrderProduct;
 import com.whiplash.core.platform.service.BaseService;

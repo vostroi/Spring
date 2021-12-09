@@ -33,7 +33,7 @@
         <log4j.version>1.2.17</log4j.version>
         <joda-time.version>2.10.10</joda-time.version>
         <hutool.version>5.3.10</hutool.version>
-        <fastjson.version>1.2.75</fastjson.version>
+        <fastjson.version>1.2.78</fastjson.version>
         <nimbus-jose-jwt.version>8.16</nimbus-jose-jwt.version>
 
         <mysql-connector.version>8.0.20</mysql-connector.version>
@@ -49,6 +49,10 @@
         <cloud.stream.rabbit>3.0.12.RELEASE</cloud.stream.rabbit>
         <loadbalance.verion>3.0.3</loadbalance.verion>
         <jasypt.version>3.0.4</jasypt.version>
+        <spring.elastic.starter.version>2.6.1</spring.elastic.starter.version>
+        <elastic.search.version>7.15.2</elastic.search.version>
+        <spring.data.elastic>4.3.0</spring.data.elastic>
+        <guava.version>31.0.1-jre</guava.version>
     </properties>
 
     <!-- 子模块引用，不引用不导致依赖 -->
@@ -172,6 +176,40 @@
                 <groupId>com.github.ulisesbocchio</groupId>
                 <artifactId>jasypt-spring-boot-starter</artifactId>
                 <version>${jasypt.version}</version>
+            </dependency>
+            <!--集成 elasticsearch-->
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${elastic.search.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-client</artifactId>
+                <version>${elastic.search.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-high-level-client</artifactId>
+                <version>${elastic.search.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-elasticsearch</artifactId>
+                <version>${spring.data.elastic}</version>
+            </dependency>
+
+            <!--集成 elasticsearch （带了 spring-data-elasticsearch ）-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+                <version>${spring.elastic.starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
             </dependency>
 
         </dependencies>

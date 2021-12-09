@@ -1,19 +1,15 @@
 package com.whiplash.product.components.controller.redis;
 
-import cn.hutool.core.date.DatePattern;
-import cn.hutool.core.date.DateUtil;
 import cn.hutool.json.JSONUtil;
 import com.google.common.collect.Maps;
-import com.sun.org.apache.regexp.internal.RE;
 import com.whiplash.components.product.bean.Product;
 import com.whiplash.components.product.bean.ProductSpecs;
-import com.whiplash.service.ProductMobileService;
-import com.whiplash.service.ProductSpecsMobileService;
+import com.whiplash.product.service.ProductMobileService;
+import com.whiplash.product.service.ProductSpecsMobileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.core.convert.RedisData;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

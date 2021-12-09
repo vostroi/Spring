@@ -1,8 +1,6 @@
 package com.whiplash.order.components.service.util;
 
-import cn.hutool.db.ds.pooled.PooledDSFactory;
 import cn.hutool.extra.spring.SpringUtil;
-import com.sun.org.apache.regexp.internal.RE;
 import com.whiplash.components.order.bean.MerchantOrder;
 import com.whiplash.components.order.bean.Order;
 import com.whiplash.components.order.bean.OrderProduct;
@@ -13,8 +11,6 @@ import com.whiplash.components.product.bean.ProductSpecs;
 import com.whiplash.components.product.feign.ProductMobileClient;
 import com.whiplash.components.product.feign.ProductSpecsMobileClient;
 import com.whiplash.core.commom.util.*;
-import com.whiplash.service.ProductMobileService;
-import com.whiplash.service.ProductSpecsMobileService;
 import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;

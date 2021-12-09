@@ -1,14 +1,14 @@
-package com.whiplash.service;
+package com.whiplash.product.service;
 
 import com.whiplash.components.product.bean.ProductSpecs;
+import com.whiplash.core.commom.util.CommonResult;
 import com.whiplash.core.commom.util.ResultData;
 import com.whiplash.core.platform.bean.BaseDto;
 import com.whiplash.core.platform.service.BaseService;
 import com.whiplash.dto.ProductDto;
 import com.whiplash.dto.ProductSpecsDto;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 /**

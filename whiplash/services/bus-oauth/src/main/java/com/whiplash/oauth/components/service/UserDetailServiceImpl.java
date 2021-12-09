@@ -3,7 +3,7 @@ package com.whiplash.oauth.components.service;
 import com.whiplash.components.oauth.bean.WhiplashUsers;
 import com.whiplash.core.commom.util.OauthConstant;
 import com.whiplash.oauth.dto.SecurityUser;
-import com.whiplash.service.WhiplashUsersService;
+import com.whiplash.oauth.service.WhiplashUsersService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.DisabledException;

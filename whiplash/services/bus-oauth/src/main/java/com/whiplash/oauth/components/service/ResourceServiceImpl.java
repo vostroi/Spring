@@ -2,7 +2,7 @@ package com.whiplash.oauth.components.service;
 
 import cn.hutool.core.collection.CollUtil;
 import com.whiplash.core.commom.util.RedisConstant;
-import com.whiplash.service.ResourceService;
+import com.whiplash.oauth.service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;

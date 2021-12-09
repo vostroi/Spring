@@ -3,7 +3,7 @@ package com.whiplash.product.components.service;
 import com.whiplash.components.product.bean.Product;
 import com.whiplash.core.platform.dao.BaseDao;
 import com.whiplash.product.components.dao.ProductMobileDao;
-import com.whiplash.service.ProductMobileService;
+import com.whiplash.product.service.ProductMobileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;

@@ -177,7 +177,7 @@ public class ResultData<T> implements Serializable {
 
     public static <T> ResultData<List<T>> getResultData(List<T> list) {
         ResultData resultData = new ResultData();
-        if(list == null || list.isEmpty()){
+        if(list == null){
             resultData.setCode(EnumConstant.RESULT_CODE.ER_3333.getCode());
             resultData.setMsg(EnumConstant.RESULT_CODE.ER_3333.getMsg());
         }else{

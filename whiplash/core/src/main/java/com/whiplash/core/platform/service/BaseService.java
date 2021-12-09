@@ -1,18 +1,17 @@
 package com.whiplash.core.platform.service;
 
 import cn.hutool.core.collection.ListUtil;
-import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.util.StrUtil;
-import cn.hutool.extra.spring.SpringUtil;
 import com.whiplash.core.commom.exception.PropertiesSetException;
-import com.whiplash.core.commom.util.BeanUtil;
+import com.whiplash.core.commom.util.CommonResult;
+import com.whiplash.core.commom.util.WhiplashBeanUtil;
 import com.whiplash.core.platform.bean.BaseEntity;
 import com.whiplash.core.platform.dao.BaseDao;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -131,7 +130,7 @@ public interface BaseService<T extends BaseEntity , ID extends Serializable> {
             return null;
         }
 
-        t = BeanUtil.setBeanProperty(t, property, value);
+        t = WhiplashBeanUtil.setBeanProperty(t, property, value);
         if(t==null){
             throw new PropertiesSetException("属性设置异常");
         }
@@ -157,7 +156,7 @@ public interface BaseService<T extends BaseEntity , ID extends Serializable> {
             return null;
         }
 
-        t = BeanUtil.setBeanProperties(t, properties);
+        t = WhiplashBeanUtil.setBeanProperties(t, properties);
         if(t==null){
             throw new PropertiesSetException("属性设置异常");
         }
@@ -223,6 +222,20 @@ public interface BaseService<T extends BaseEntity , ID extends Serializable> {
         tList.forEach(t->{
             getDao().delete(t);
         });
+    }
+
+    /**
+     * 分页获取数据
+     * @param pager
+     * @return
+     */
+    default CommonResult<Page<T>> page(Pageable pager){
+        if (pager == null) {
+            return CommonResult.fail("pager is null");
+        }
+
+        Page<T> pageData = getDao().findAll(pager);
+        return CommonResult.success(pageData);
     }
 
 }

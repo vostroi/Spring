@@ -2,7 +2,6 @@ package com.whiplash.order.components.dao;
 
 import com.whiplash.components.order.bean.MerchantOrder;
 import com.whiplash.core.platform.dao.BaseDao;
-import com.whiplash.service.MerchantOrderService;
 import org.springframework.stereotype.Repository;
 
 /**

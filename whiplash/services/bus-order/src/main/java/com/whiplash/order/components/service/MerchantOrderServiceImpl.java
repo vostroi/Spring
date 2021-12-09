@@ -3,7 +3,7 @@ package com.whiplash.order.components.service;
 import com.whiplash.components.order.bean.MerchantOrder;
 import com.whiplash.core.platform.dao.BaseDao;
 import com.whiplash.order.components.dao.MerchantOrderDao;
-import com.whiplash.service.MerchantOrderService;
+import com.whiplash.order.service.MerchantOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

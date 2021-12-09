@@ -1,19 +1,21 @@
 package com.whiplash.product.components.controller;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import com.whiplash.components.order.dto.OrderDto;
 import com.whiplash.components.order.dto.SingleOrderSubmitDto;
 import com.whiplash.components.product.bean.ProductSpecs;
+import com.whiplash.core.commom.spring.PagerUtil;
+import com.whiplash.core.commom.util.CommonResult;
 import com.whiplash.core.commom.util.ProductConstant;
 import com.whiplash.core.commom.util.ResultData;
 import com.whiplash.core.platform.controller.BaseController;
 import com.whiplash.core.platform.service.BaseService;
 import com.whiplash.dto.ProductDto;
 import com.whiplash.dto.ProductSpecsDto;
-import com.whiplash.service.ProductMobileService;
-import com.whiplash.service.ProductSpecsMobileService;
+import com.whiplash.product.service.ProductMobileService;
+import com.whiplash.product.service.ProductSpecsMobileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,6 +38,15 @@ public class ProductSpecsMobileController extends BaseController<ProductSpecs,Lo
     public BaseService<ProductSpecs, Long> getService() {
         return psmService;
     }
+
+
+    @GetMapping(value = "/page/{page}/{size}")
+    public ResultData<List<ProductSpecs>> listByPage(@PathVariable("page") int page, @PathVariable("size") int size) {
+        Pageable pager = PagerUtil.initPage(page, size, null, null);
+        CommonResult<Page<ProductSpecs>> cr = psmService.page(pager);
+        return ResultData.getResultData(cr.getT().getContent());
+    }
+
 
     /**
      * 获取指定商品的所有规格

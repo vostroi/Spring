@@ -1,4 +1,4 @@
-package com.whiplash.service;
+package com.whiplash.oauth.service;
 
 /**
  * @author Administrator

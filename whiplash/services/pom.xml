@@ -20,6 +20,7 @@
         <module>bus-oauth</module>
         <module>bus-product</module>
         <module>bus-payment</module>
+        <module>bus-elastic</module>
     </modules>
 
     <dependencies>
