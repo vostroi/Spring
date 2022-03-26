@@ -30,7 +30,7 @@
 
         <lombok.version>1.18.12</lombok.version>
         <junit.version>4.13</junit.version>
-        <log4j.version>1.2.17</log4j.version>
+        <log4j.version>2.17.1</log4j.version>
         <joda-time.version>2.10.10</joda-time.version>
         <hutool.version>5.3.10</hutool.version>
         <fastjson.version>1.2.78</fastjson.version>
@@ -146,11 +146,11 @@
                 <artifactId>spring-boot-devtools</artifactId>
                 <version>${spring.boot.version}</version>
             </dependency>
-            <dependency>
-                <groupId>log4j</groupId>
-                <artifactId>log4j</artifactId>
-                <version>${log4j.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>log4j</groupId>-->
+<!--                <artifactId>log4j</artifactId>-->
+<!--                <version>${log4j.version}</version>-->
+<!--            </dependency>-->
             <dependency>
                 <groupId>joda-time</groupId>
                 <artifactId>joda-time</artifactId>
