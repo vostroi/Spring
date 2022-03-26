@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "dubbo.reference.com.vostroi.service.CustomerSer",
+      "type": "java.lang.String",
+      "description": "Description for dubbo.reference.com.vostroi.service.CustomerSer."
+  }
+] }

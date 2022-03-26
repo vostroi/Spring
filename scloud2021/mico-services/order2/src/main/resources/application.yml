@@ -1,0 +1,65 @@
+server:
+  port: 10101
+spring:
+  application:
+    name: service-order
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  cloud:
+#    zookeeper:
+#      connect-string: 127.0.0.1:2181
+#      discovery:
+#        enabled: true
+    stream:
+      binders:
+        my_rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 127.0.0.1
+                username: guest
+                password: guest
+
+      bindings:
+        # custom input channel name
+        input:
+          destination: CUST_EXCHANGE
+          binder: my_rabbit
+          content-type: application/json
+          group: service-order
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+#  zipkin:
+#    base-url: http://127.0.0.1:9411/zipkin
+#  sleuth:
+#    sampler:
+#      probability: 1
+#      rate: 10
+
+##
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+feign:
+  client:
+    config:
+      service-product:
+        connect-timeout: 5000
+        read-timeout: 5000
+  hystrix:
+    enabled: true
+
+logging:
+  level:
+    root: info

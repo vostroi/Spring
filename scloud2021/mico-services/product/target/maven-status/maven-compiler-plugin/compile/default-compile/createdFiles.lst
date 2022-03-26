@@ -1,0 +1,4 @@
+com\vostroi\product\components\service\impl\mobile\ProductMobileServiceImpl.class
+com\vostroi\product\components\dao\ProductDao.class
+com\vostroi\product\components\controller\mobile\ProductMobileController.class
+com\vostroi\product\ProductApplication.class

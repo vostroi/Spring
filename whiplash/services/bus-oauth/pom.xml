@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>services</artifactId>
+        <groupId>org.whiplash</groupId>
+        <version>2.0.2.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>bus-oauth</artifactId>
+    <name>bus-oauth</name>
+    <description>认证授权服务</description>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.whiplash</groupId>
+            <artifactId>core</artifactId>
+            <version>${scloud.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.whiplash</groupId>
+            <artifactId>api-oauth</artifactId>
+            <version>${scloud.version}</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>${spring.data.redis.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>

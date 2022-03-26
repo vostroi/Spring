@@ -1,0 +1,78 @@
+server:
+  port: 10030
+
+
+spring:
+  application:
+    name: elastic-server
+
+  datasource:
+    url: jdbc:mysql://120.25.216.73:3306/whiplash-product?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ENC(UUcDXrhTzvXcjc7ypW/mqQ==)
+    password: ENC(guYfbOLDOjbIP974BnUaSnsEmlzkWc1o)
+    hikari:
+      auto-commit: false
+      maximum-pool-size: 10
+      minimum-idle: 2
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database: mysql
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 120.25.216.73:8848
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+
+
+  elasticsearch:
+    rest:
+      uris: http://120.25.216.73:9200
+#      username: xxx
+#      password: xxx
+
+
+  main:
+    allow-bean-definition-overriding: true
+
+
+# 暴雷 actuator 端点， 注意在 yml中 所有端点 用"*"， 在 properties中 所有端点用*
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+jasypt:
+  encryptor:
+    # 盐
+    password: whiplash
+    # 算法
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+
+
+
+#
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        data:
+#          elasticsearch:
+#            core: DEBUG
+
+#logging:
+#  level:
+#    org.springframework.data.elasticsearch.client.WIRE: TRACE

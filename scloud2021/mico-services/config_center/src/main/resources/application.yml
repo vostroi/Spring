@@ -1,0 +1,38 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: config_center
+  cloud:
+    zookeeper:
+      discovery:
+        enabled: true
+      connect-string: 127.0.0.1:2181
+    config:
+      server:
+        git:
+          uri: https://github.com/vostroi/spring-cloud-config.git
+          search-paths:
+            - /ms_2021
+          password: t51011983
+          username: vostroi
+      # 可以不配 默认找 master (main) 分支
+      # 请求配置文件REST格式（不写分支 默认请求 master）
+      # http://127.0.0.1:3344/main/customer-dev.yml
+      # ip:port/{label分支}/文件名（注意格式：{服务名}-{环境}）
+      label: main
+
+
+  ## 加入spring cloud bus后 配置 rabbitmq相关
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+## 暴露 bus 刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"

@@ -1,0 +1,22 @@
+1.新建springboot web项目
+2.引入依赖
+    <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
+    <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt</artifactId>
+        <version>0.9.1</version>
+    </dependency>
+3.JjwtApplicationTests
+
+4.整合springsecurity oauth2 + jwt
+    4.1 使用 JwtTokenStore 替换之前的 RedisTokenStore
+    4.2 需要转换器将 oauth2 的 access_token转换成 jwt token
+    4.3 注意spring cloud 和 spring boot 版本匹配
+5.跟oauth2一样获取code,再换取token（JWT TOKEN）
+6.JWT TOKEN前台解析
+7.自定义扩展JWT TOKEN内容
+    7.1 编写 JWTTokenEnhancer implements TokenEnhancer 在这里添加自定义的内容
+	7.2 授权服务器，配置.tokenEnhancer(tokenEnhancerChain)
+	7.3 服务端解析 JWT TOKEN
+8.token有效时间及刷新token	
+9.集成单点登录，AuthorizationServerConfig作为单点登录的认证服务器，还需要新建项目作为客户端应用

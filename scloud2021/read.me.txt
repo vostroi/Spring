@@ -1,0 +1,80 @@
+spring cloud Hoxton.SR11
+spring boot 2.3.10.RELEASE
+mybatis版本，之前没使用过mybatis，初步使用下来，因为不熟悉，体验较差; 简单的select insert 都需要写SQL； spring data jpa相比就方便很多，直接写方法搞定
+2020.05.15
+    工程框架有了，抽象了公共dao service controller
+2020.05.30
+    注释了eureka注册中心配置，学习使用zookeeper
+2020.06.15
+    zookeeper 集群 （windows 参考springcloud 有道笔记）
+2020.06.15
+    注释zookeeper ， 学习使用consul
+    区别：
+                        eureka                                 zookeeper                                      consul
+    开发语言            JAVA                                    JAVA                                           GO
+    CAP                 AP                                       CP                                           CP
+    服务健康检查         支持（可配）                             支持                                           支持
+    对外暴露接口         http                                    客户端                                           http/dns
+    spring cloud集成    集成                                    集成                                           集成
+2020.06.15
+    继续使用zookeeper 学习
+2020.06.15
+    ribbon学习
+        CustomerSpringConfig 能被 spring 扫描到， 会对所有 provider 起效
+        com.vostroi.custom.ProductServiceRibbonRule 配置 @RibbonClients 可对不同的 provider 定制负载均衡
+2020.06.17
+    feign学习
+        feign不能注入，@EnableFeignClients(basePackages = {})确保Feign被扫描到
+        feign针对不同 provider 定制超时时间
+        feign开启日志
+2020.06.22
+    hystrix学习
+        provider 新增两个测试接口 一个正常访问，一个设置超时，并完成从consumer到provider的调用，jemter模拟高并发请求consumer超时的接口，会导致consumer的其它正常接口也变慢（高并发的请求太多，consumer资源被长时间占用严重）
+        provider端增加hystrix
+        consumer端增加hystrix
+        @DefaultProperties(defaultFallback = "timeOutHandler") 来解决在每个调用服务的方法定制fallback方法，仍然需要@HystrixCommand注解，还是有代码耦合
+        结合FeignClient 解决代码耦合，同时无需@HystrixCommand注解
+        熔断学习
+        HystrixDashboard:解决HystrixDashboard连接不上问题，见云笔记
+        优化了pom依赖关系
+2020.06.27
+    SpringCloud Gateway学习
+2020.06.29
+    SpringCloud Config学习
+    config server模块
+    整合 spring cloud bus 实现 配置文件动态刷新
+2020.07.07
+    SpringCloud Stream学习
+        customer 作为 生产者
+        order 作为 消费者
+    SpringCloud sleuth学习
+    上面两者 还需要找资料深入学习
+2020.07.11
+    SpringCloud Alibaba学习
+2020.07.11
+    alibaba nacos学习
+    nacos + openfeign ， 最初一直调不能服务，原来是优化了项目包结构，导致没扫描到controller
+    nacos 作配置中心 + 动态刷新 学习
+    nacos 分类配置 namespace + group + dataId
+    nacos 持久化(mysql)  nacos集群 nginx负载均衡
+2020.07.19
+    alibaba sentinel学习
+    hystrix的问题：
+        需要开发人员搭建监控平台 hystrix-dashboard
+        web界面不能更细粒度配置 流量控制，服务熔断，降级，速率控制
+    sentinel:
+        1. 安装（下载jar）
+        2. 编码 引入依赖
+        3. 控制台使用学习
+        4. sentinel + openfeign
+        5. sentinel 持久化 配合 nacos
+2020.08.02
+    seata学习
+    准备环境 customer和product 注册到nacos，mybatis 不使用seatc情况下，feign调用 更新数据到mysql
+    问题：
+        customer 之前两个配置文件 bootstrap.yml和application.yml，这次启动发现application.yml中的配置没生效，将application.yml中的配置移到了bootstrap.yml中
+        项目启动 报找不到dao对应mapper映射文件中的方法，clean工程 重启解决
+        product中的mybatis映射文件，字段映射错误 导致更新数据出错
+    seata默认的cglib代理数据源会报错，应该还需要一些配置，这里使用的是seata.use-jdk-proxy=true
+    openfeign的fallback会导致seata失效，后续查找解决方法
+
