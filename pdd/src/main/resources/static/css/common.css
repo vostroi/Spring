@@ -1,0 +1,36 @@
+.main-container{
+    width: 100%;
+    /*height: 1000px;*/
+}
+.el-header{
+    margin: 0px 5px;
+    height:70px;
+    background-color: #A2AEE8;
+}
+.el-container{
+    margin: 0px;
+    padding: 0px;
+}
+.el-main{
+    padding: 5px;
+    background-color: lightgray;
+}
+/*.el-aside{*/
+/*    padding: 5px;*/
+/*    width: 260px;*/
+/*    height: 100%;*/
+/*}*/
+.el-menu{
+    height: 100%;
+    overflow-y:auto;
+}
+.el-menu-vertical-list:not(.el-menu--collapse) {
+    width: 260px;
+    min-height: 800px;
+    overflow-y:auto;
+    /*background-color: #596ED5;*/
+}
+.menu-path-link-row{
+    height: 50px;
+    background-color: teal;
+}

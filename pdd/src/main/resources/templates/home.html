@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="/favicon.ico" mce_href="/favicon.ico" type="image/x-icon" />
+    <title>稳如狗</title>
+    <link rel="stylesheet" href="webjars/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="webjars/vue/dist/vue.min.js"></script>
+    <script type="text/javascript" src="webjars/element-ui/lib/index.js"></script>
+
+</head>
+    <body>
+        <div id="app">
+            <el-container class="main-container" :style="screenHeight">
+                <el-header>
+                    Header
+                </el-header>
+                <el-container >
+                    <el-menu class="el-menu-vertical-list" :collapse="treeCollapse" unique-opened="true">
+                        <el-submenu index="1">
+                            <template slot="title">
+                                <i class="el-icon-location"></i>
+                                <span slot="title">导航一</span>
+                            </template>
+                            <el-menu-item-group>
+                                <el-menu-item index="1-1">选项1</el-menu-item>
+                                <el-menu-item index="1-2">选项2</el-menu-item>
+                            </el-menu-item-group>
+                        </el-submenu>
+                        <el-submenu index="2">
+                            <template slot="title">
+                                <i class="el-icon-location"></i>
+                                <span slot="title">导航二</span>
+                            </template>
+                            <el-menu-item-group>
+                                <el-menu-item index="2-1">选项1</el-menu-item>
+                                <el-menu-item index="2-2">选项2</el-menu-item>
+                            </el-menu-item-group>
+                        </el-submenu>
+                    </el-menu>
+                    <el-main>
+                        <!--  菜单路径-->
+                        <el-row class="menu-path-link-row">
+                            <el-col :span="1" ><i class="el-icon-menu" v-model="treeCollapse" title="展开/关闭菜单" @click="treeCollapse = !treeCollapse "></i></el-col>
+                        </el-row>
+                        <!-- 主工作区 -->
+                        <el-container>
+                            WorkSpace
+                        </el-container>
+                    </el-main>
+                </el-container>
+            </el-container>
+        </div>
+    </body>
+    <!-- 自定义JS -->
+    <script src="js/home.js"></script>
+</html>
