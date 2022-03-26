@@ -1,0 +1,3 @@
+spring boot 2 集成 redis 使用 lettuce 客户端
+1.Jedis是直连redis，多线程环境下非线程安全，除非使用连接池为每个Jedis实例增加物理连接
+2.Lettuce基于Netty，支持多个线程间并发访问，且线程安全，可伸缩设计，一个连接实例不够情况下，可按需增加实例
