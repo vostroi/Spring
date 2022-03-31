@@ -26,7 +26,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <mcloud.version>1.0.0-SNAPSHOT</mcloud.version>
-        <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
+        <spring-boot.version>2.5.12</spring-boot.version>
         <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
         <pring-cloud-starter.version>2.2.5.RELEASE</pring-cloud-starter.version>
         <ribbon-start.version>2.2.5.RELEASE</ribbon-start.version>
