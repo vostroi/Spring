@@ -36,7 +36,7 @@
         <fastjson.version>1.2.78</fastjson.version>
         <nimbus-jose-jwt.version>8.16</nimbus-jose-jwt.version>
 
-        <mysql-connector.version>8.0.20</mysql-connector.version>
+        <mysql-connector.version>8.0.28</mysql-connector.version>
         <druid.version>1.2.6</druid.version>
         <mybatis.spring.boot.version>2.1.4</mybatis.spring.boot.version>
 
